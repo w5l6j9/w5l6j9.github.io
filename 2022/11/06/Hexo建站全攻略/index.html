@@ -14,7 +14,7 @@
 <meta property="og:description" content="一、Hexo简介Hexo 是一个快速、简洁且高效的博客框架，使用 Markdown解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 二、搭建流程（Linux）1、准备工作安装node.js下载地址：https:&#x2F;&#x2F;nodejs.org&#x2F;en推荐下载LTS版，默认安装即可 2、安装hexonpm install -g hexo-cli 3、初始化hexo文件夹（1）、创建文件夹所有的建站文件都会">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-11-06T01:20:21.000Z">
-<meta property="article:modified_time" content="2022-11-06T12:35:59.599Z">
+<meta property="article:modified_time" content="2022-12-03T14:13:26.160Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -106,11 +106,51 @@
 <p>hexo generate</p>
 <p>hexo server</p>
 <p>完成后在浏览器中打开：<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a></p>
+<p>打开后如下图所示，此时hexo就运行起来了</p>
+<p>6、创建仓库<br>在github上创建博客的仓库，创建仓库地址：<a target="_blank" rel="noopener" href="https://github.com/new">https://github.com/new</a><br>例如我的github帐号名为w5l6j9，那么我的Repository的name就必须为文w5l6j9.github.io</p>
+<p>7、修改配置文件<br>（1）、修改deploy<br>cd home\myweb下的_config.yml文件，搜索deploy，修改为如下格式，其中repository就是刚才创建的仓库地址，需要注意的是每个字段后都有冒号，冒号后有一个英文的空格<br>修改如下所示：</p>
+<p>deploy:<br>  type: git<br>  repository: <a target="_blank" rel="noopener" href="https://github.com/w5l6j9/w5l6j9.github.io.git">https://github.com/w5l6j9/w5l6j9.github.io.git</a><br>  branch: master<br>（2）、修改URL<br>搜索ULR，将url替换成<a href="https://w5l6j9.github.io/">https://w5l6j9.github.io/</a></p>
+<p>#URL<br>##If your site is put in a subdirectory, set url as ‘<a target="_blank" rel="noopener" href="http://yoursite.com/child&#39;">http://yoursite.com/child&#39;</a> and root as ‘&#x2F;child&#x2F;‘</p>
+<p>url: <a href="https://w5l6j9.github.io/">https://w5l6j9.github.io</a><br>8、设置SSH keys<br>（1）、生成SHH keys<br>输入下面的命令，查看是否生成过ssh，如果有则将根目录下的.ssh文件夹删除</p>
+<p>ls -al ~&#x2F;.ssh</p>
+<p>然后依次输入下面的命令，邮箱为你自己申请github的邮箱</p>
+<p>ssh-keygen -t rsa -C “<a href="mailto:&#101;&#120;&#x61;&#x6d;&#112;&#x6c;&#x65;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#109;">&#101;&#120;&#x61;&#x6d;&#112;&#x6c;&#x65;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#109;</a>“</p>
+<p>ssh-agent -s</p>
+<p>ssh-add ~&#x2F;.ssh&#x2F;id_rsa</p>
+<p>如果出现Could not open a connection to your authentication agent.则依次输入下面的指令</p>
+<p>eval <code>ssh-agent -s</code></p>
+<p>ssh-add</p>
+<p>然后输入下面的命令，复制公钥</p>
+<p>clip &lt; ~&#x2F;.ssh&#x2F;id_rsa.pub</p>
+<p>（2）、设置SSH keys<br>点击github的头像，选择Settings</p>
+<p>设置</p>
+<p>然后依次点击左侧的SSHand GPG keys和右上角的New SSH key</p>
+<p>添加SSH</p>
+<p>title可以随意取名，将刚才复制的公钥粘贴到key的文本框中，点击Add SHH key，要求输入密码，输入后即可添加成功。</p>
+<p>（3）、测试<br>输入</p>
+<p>ssh -T <a href="mailto:&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#x74;&#x68;&#117;&#x62;&#46;&#x63;&#x6f;&#x6d;">&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#x74;&#x68;&#117;&#x62;&#46;&#x63;&#x6f;&#x6d;</a></p>
+<p>会出现提示，输入yes，再次按回车，当出现下图所示的文字时，表示测试成功，SSH配置成功！</p>
+<p>如果出现remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.</p>
+<p>意思就是要用个人令牌连接</p>
+<p>具体解决方法看这篇博客<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42714262/article/details/119706383">https://blog.csdn.net/qq_42714262/article/details/119706383</a></p>
+<p>最后把config.yml中的地址替换成类似如下的这种<br>  repository: <a target="_blank" rel="noopener" href="https://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@github.com/w5l6j9/w5l6j9.github.io">https://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@github.com/w5l6j9/w5l6j9.github.io</a></p>
+<p>9、部署到github上<br>输入</p>
+<p>hexo generate</p>
+<p>然后再输入</p>
+<p>hexo deploy</p>
+<p>如果出现以下错误：</p>
+<p>ERROR Deployer not found: github<br>就需要安装hexo-deployer-git模块，在Git Bash中输入</p>
+<p>npm install hexo-deployer-git –save</p>
+<p>安装好之后重新执行</p>
+<p>hexo deploy</p>
+<p>10、访问博客<br>在浏览器打开：<a href="https://w5l6j9.github.io/">https://w5l6j9.github.io/</a> ，即可访问基于hexo的博客了！<br>PS：部署之后可能有延迟，请耐心等待。</p>
+<p>11、命令简化<br>hexo的命令可以简写，如下：</p>
+<p>命令	简写<br>hexo generate	hexo g<br>hexo deploy	hexo d<br>hexo server	hexo s</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://w5l6j9.github.io/2022/11/06/Hexo%E5%BB%BA%E7%AB%99%E5%85%A8%E6%94%BB%E7%95%A5/" data-id="clb7yzhd2000081s9bxl37hca" data-title="Hexo建站全攻略" class="article-share-link">Share</a>
+      <a data-url="https://w5l6j9.github.io/2022/11/06/Hexo%E5%BB%BA%E7%AB%99%E5%85%A8%E6%94%BB%E7%95%A5/" data-id="clbev3qbo00002as94wx05rt3" data-title="Hexo建站全攻略" class="article-share-link">Share</a>
       
       
       
@@ -118,16 +158,6 @@
   </div>
   
     
-<nav id="article-nav">
-  
-  
-    <a href="/2022/10/06/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World body!</div>
-    </a>
-  
-</nav>
-
   
 </article>
 
@@ -148,7 +178,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li></ul>
     </div>
   </div>
 
@@ -162,10 +192,6 @@
         
           <li>
             <a href="/2022/11/06/Hexo%E5%BB%BA%E7%AB%99%E5%85%A8%E6%94%BB%E7%95%A5/">Hexo建站全攻略</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/06/hello-world/">Hello World body!</a>
           </li>
         
       </ul>
