@@ -183,7 +183,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-03 22:13:26" itemprop="dateModified" datetime="2022-12-03T22:13:26+08:00">2022-12-03</time>
+                <time title="修改时间：2022-12-09 09:01:34" itemprop="dateModified" datetime="2022-12-09T09:01:34+08:00">2022-12-09</time>
               </span>
 
           
@@ -199,52 +199,70 @@
       
           <p>一、Hexo简介<br>Hexo 是一个快速、简洁且高效的博客框架，使用 Markdown解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
 <p>二、搭建流程（Linux）<br>1、准备工作<br>安装node.js<br>下载地址：<a target="_blank" rel="noopener" href="https://nodejs.org/en">https://nodejs.org/en</a><br>推荐下载LTS版，默认安装即可</p>
-<p>2、安装hexo<br>npm install -g hexo-cli</p>
-<p>3、初始化hexo文件夹<br>（1）、创建文件夹<br>所有的建站文件都会存储在一个文件夹中，所以挑选一个位置，创建一个文件夹，路径和文件夹名字最好是英文。<br>例如我在&#x2F;home路径下创建myweb文件夹<br>（2）、初始化文件夹<br>cd &#x2F;home&#x2F;myweb</p>
-<p>hexo init</p>
+<p>2、安装hexo</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>3、初始化hexo文件夹<br>（1）、创建文件夹<br>所有的建站文件都会存储在一个文件夹中，所以挑选一个位置，创建一个文件夹，路径和文件夹名字最好是英文。<br>例如我在&#x2F;home路径下创建myweb文件夹<br>（2）、初始化文件夹</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/myweb</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
 <p>4、安装依赖包</p>
-<p>npm install</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+
+
 <p>5、本地运行hexo</p>
-<p>hexo generate</p>
-<p>hexo server</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+
 <p>完成后在浏览器中打开：<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a></p>
 <p>打开后如下图所示，此时hexo就运行起来了</p>
 <p>6、创建仓库<br>在github上创建博客的仓库，创建仓库地址：<a target="_blank" rel="noopener" href="https://github.com/new">https://github.com/new</a><br>例如我的github帐号名为w5l6j9，那么我的Repository的name就必须为文w5l6j9.github.io</p>
-<p>7、修改配置文件<br>（1）、修改deploy<br>cd home\myweb下的_config.yml文件，搜索deploy，修改为如下格式，其中repository就是刚才创建的仓库地址，需要注意的是每个字段后都有冒号，冒号后有一个英文的空格<br>修改如下所示：</p>
+<p>7、修改配置文件<br>（1）、修改deploy<br>打开 home\myweb下的_config.yml文件，搜索deploy，修改为如下格式，其中repository就是刚才创建的仓库地址，需要注意的是每个字段后都有冒号，冒号后有一个英文的空格<br>修改如下所示：</p>
 <p>deploy:<br>  type: git<br>  repository: <a target="_blank" rel="noopener" href="https://github.com/w5l6j9/w5l6j9.github.io.git">https://github.com/w5l6j9/w5l6j9.github.io.git</a><br>  branch: master<br>（2）、修改URL<br>搜索ULR，将url替换成<a href="https://w5l6j9.github.io/">https://w5l6j9.github.io/</a></p>
 <p>#URL<br>##If your site is put in a subdirectory, set url as ‘<a target="_blank" rel="noopener" href="http://yoursite.com/child&#39;">http://yoursite.com/child&#39;</a> and root as ‘&#x2F;child&#x2F;‘</p>
 <p>url: <a href="https://w5l6j9.github.io/">https://w5l6j9.github.io</a><br>8、设置SSH keys<br>（1）、生成SHH keys<br>输入下面的命令，查看是否生成过ssh，如果有则将根目录下的.ssh文件夹删除</p>
-<p>ls -al ~&#x2F;.ssh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -al ~/.ssh</span><br></pre></td></tr></table></figure>
+
 <p>然后依次输入下面的命令，邮箱为你自己申请github的邮箱</p>
-<p>ssh-keygen -t rsa -C “<a href="mailto:&#x65;&#120;&#97;&#109;&#112;&#x6c;&#x65;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#109;">&#x65;&#120;&#97;&#109;&#112;&#x6c;&#x65;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#109;</a>“</p>
-<p>ssh-agent -s</p>
-<p>ssh-add ~&#x2F;.ssh&#x2F;id_rsa</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;example@qq.com&quot;</span><br><span class="line"></span><br><span class="line">ssh-agent -s</span><br><span class="line"></span><br><span class="line">ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+
+
 <p>如果出现Could not open a connection to your authentication agent.则依次输入下面的指令</p>
-<p>eval <code>ssh-agent -s</code></p>
-<p>ssh-add</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">eval `ssh-agent -s`</span><br><span class="line"></span><br><span class="line">ssh-add</span><br></pre></td></tr></table></figure>
+
 <p>然后输入下面的命令，复制公钥</p>
-<p>clip &lt; ~&#x2F;.ssh&#x2F;id_rsa.pub</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clip &lt; ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
 <p>（2）、设置SSH keys<br>点击github的头像，选择Settings</p>
 <p>设置</p>
 <p>然后依次点击左侧的SSHand GPG keys和右上角的New SSH key</p>
 <p>添加SSH</p>
 <p>title可以随意取名，将刚才复制的公钥粘贴到key的文本框中，点击Add SHH key，要求输入密码，输入后即可添加成功。</p>
 <p>（3）、测试<br>输入</p>
-<p>ssh -T <a href="mailto:&#103;&#105;&#116;&#x40;&#103;&#x69;&#116;&#104;&#117;&#x62;&#x2e;&#99;&#x6f;&#109;">&#103;&#105;&#116;&#x40;&#103;&#x69;&#116;&#104;&#117;&#x62;&#x2e;&#99;&#x6f;&#109;</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
 <p>会出现提示，输入yes，再次按回车，当出现下图所示的文字时，表示测试成功，SSH配置成功！</p>
 <p>如果出现remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.</p>
 <p>意思就是要用个人令牌连接</p>
 <p>具体解决方法看这篇博客<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42714262/article/details/119706383">https://blog.csdn.net/qq_42714262/article/details/119706383</a></p>
-<p>最后把config.yml中的地址替换成类似如下的这种<br>  repository: <a target="_blank" rel="noopener" href="https://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@github.com/w5l6j9/w5l6j9.github.io">https://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@github.com/w5l6j9/w5l6j9.github.io</a></p>
+<p>最后把config.yml中的地址替换成如下的地址(账号名换成你自己的)<br>  repository: <a target="_blank" rel="noopener" href="https://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@github.com/w5l6j9/w5l6j9.github.io">https://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@github.com/w5l6j9/w5l6j9.github.io</a></p>
 <p>9、部署到github上<br>输入</p>
-<p>hexo generate</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+
 <p>然后再输入</p>
-<p>hexo deploy</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
 <p>如果出现以下错误：</p>
-<p>ERROR Deployer not found: github<br>就需要安装hexo-deployer-git模块，在Git Bash中输入</p>
-<p>npm install hexo-deployer-git –save</p>
+<p>ERROR Deployer not found: github<br>就需要安装hexo-deployer-git模块，<br>输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
 <p>安装好之后重新执行</p>
-<p>hexo deploy</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
 <p>10、访问博客<br>在浏览器打开：<a href="https://w5l6j9.github.io/">https://w5l6j9.github.io/</a> ，即可访问基于hexo的博客了！<br>PS：部署之后可能有延迟，请耐心等待。</p>
 <p>11、命令简化<br>hexo的命令可以简写，如下：</p>
 <p>命令	简写<br>hexo generate	hexo g<br>hexo deploy	hexo d<br>hexo server	hexo s</p>
