@@ -121,5 +121,5 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repository: https://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@github.com/w5l6j9/w5l6j9.github.io
+  repository: https://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@github.com/w5l6j9/w5l6j9.github.io
   branch: master
