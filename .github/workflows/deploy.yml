@@ -57,4 +57,4 @@ jobs:
           publish_dir: ./public # 使用Hexo/hugo等生成静态页面的目录
           user_name: ${{ env.GIT_USER }}
           user_email: ${{ env.GIT_EMAIL }}
-          #GH_PAT: ${{ secrets.GH_PAT }}
+          GH_PAT: ${{ secrets.GH_PAT }}
