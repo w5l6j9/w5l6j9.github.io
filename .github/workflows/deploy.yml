@@ -1,0 +1,50 @@
+name: Hexo Blog Delopy
+
+on:
+  push:
+    branches:
+      - source
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # @see https://github.com/actions/checkout
+      - name: Checkout Repository master branch
+        uses: actions/checkout@master
+
+      # @see https://github.com/actions/setup-node
+      - name: Setup Node.js
+        uses: actions/setup-node@master
+        with:
+          node-version: "14"
+
+      - name: Setup Hexo
+        run: |
+          npm install hexo-cli -g
+
+      - name: Deploy Hexo
+        run: |
+          hexo clean
+          hexo generate
+          hexo deploy
+
+      - name: Setup Git Infomation
+        run: |
+          git config --global user.name 'w5l6j9'          git config --global user.email '381414439@qq.com'
+
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          # 部署到 master 分支
+          target_branch: master
+          # 部署目录为 Hexo 的默认输出目录
+          build_dir: public
+          # 自定义域名(CNAME)(可选)
+          fqdn:
+          # 强制提交
+          keep_history: true
+        env:
+          # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
+          GITHUB_TOKEN: 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
