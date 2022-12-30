@@ -7,8 +7,8 @@ on:
 
 
 env: # 统一设置环境变量
-  GIT_USER: git
-  GIT_EMAIL: email@example.com
+  GIT_USER: w5l6j9
+  GIT_EMAIL: 381414439@qq.com
   THEME_REPO: git/next # 你使用的主题仓库地址
   THEME_BRANCH: master
   DEPLOY_REPO: git/w5l6j9.github.io # 你用来发布github pages的仓库地址
@@ -33,6 +33,11 @@ jobs:
         run: |
           npm install -g hexo-cli
           npm install
+
+      - name: Setup Git Infomation
+        run: |
+          git config --global user.name 'w5l6j9'
+          git config --global user.email '381414439@qq.com'
 
       - name: Deploy Hexo
         run: |
