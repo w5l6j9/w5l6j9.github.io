@@ -19,27 +19,35 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    steps:
-      # @see https://github.com/actions/checkout
-      - name: Checkout Repository master branch
-        uses: actions/checkout@master
+    steps: # 一个job由多个 step 组成，本博的由7个step组成
+      # 1. Checkout hexo.git 中的内容
+      - name: Checkout Hexo repo
+        # 检出项目，如果不指定名称，默认使用运行Github Action 的仓库，即hexo.git
+        uses: actions/checkout@v2
 
-      # @see https://github.com/actions/setup-node
-      - name: Setup Node.js
-        uses: actions/setup-node@master
+      # 2. Checkout next.git 主题内容到 theme目录
+      - name: Checkout Theme repo
+        # actions/checkout 就是Acton工具，实现checkout项目，每个action也是一个git仓库
+        # 可以直接通过 github.com/工具名称进行访问，即github.com/actions/checkout
+        uses: actions/checkout@v2
         with:
-          node-version: "14"
+          repository: ${{ env.THEME_REPO }} # 要checkout的仓库地址
+          ref: ${{ env.THEME_BRANCH }}
+          path: themes/next # 要checkout到的路径
 
-      - name: Setup Hexo
-        run: |
+      # 3. 安装 node.js 环境
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v2 # 使用actions/setup-node安装nodejs
+        with:
+          node-version: ${{ matrix.node }}
+
+      # 4. 安装Heox
+      - name: Install Hexo
+        run: | # 运行command命令
           npm install -g hexo-cli
           npm install
 
-      - name: Setup Git Infomation
-        run: |
-          git config --global user.name 'w5l6j9'
-          git config --global user.email '381414439@qq.com'
-
+      # 5. 使用Hexo生成静态页面
       - name: Deploy Hexo
         run: |
           hexo clean
