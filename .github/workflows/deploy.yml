@@ -55,6 +55,7 @@ jobs:
           publish_dir: ./public # 使用Hexo/hugo等生成静态页面的目录
           user_name: ${{ env.GIT_USER }}
           user_email: ${{ env.GIT_EMAIL }}
+          GH_PAT: ${{ secrets.GH_PAT }}
         env:
           # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           GITHUB_TOKEN: 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
