@@ -11,12 +11,12 @@ jobs:
 
     steps:
       # @see https://github.com/actions/checkout
-      - name: Checkout Repository master branch
-        uses: actions/checkout@master
+      - name: Checkout Repository source branch
+        uses: actions/checkout@source
 
       # @see https://github.com/actions/setup-node
       - name: Setup Node.js
-        uses: actions/setup-node@master
+        uses: actions/setup-node@source
         with:
           node-version: "14"
 
