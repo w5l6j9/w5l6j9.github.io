@@ -20,15 +20,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # @see https://github.com/actions/checkout
-      - name: Checkout Repository master branch
-        uses: actions/checkout@master
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      # @see https://github.com/actions/setup-node
-      - name: Setup Node.js
-        uses: actions/setup-node@master
+      - name: Setup
+        uses: actions/setup-node@v2
         with:
-          node-version: "14"
+        node-version: 16
 
       - name: Setup Hexo
         run: |
@@ -49,7 +47,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{ env.GITHUB_TOKEN }}
+          #deploy_key: ${{ env.GITHUB_TOKEN }}
           # 部署到 master 分支
           target_branch: master
           external_repository: ${{ env.DEPLOY_REPO }} # Hexo.git 的仓库地址
@@ -57,4 +55,4 @@ jobs:
           publish_dir: ./public # 使用Hexo/hugo等生成静态页面的目录
           user_name: ${{ env.GIT_USER }}
           user_email: ${{ env.GIT_EMAIL }}
-          GH_PAT: ${{ secrets.GH_PAT }}
+          #GH_PAT: ${{ secrets.GH_PAT }}
