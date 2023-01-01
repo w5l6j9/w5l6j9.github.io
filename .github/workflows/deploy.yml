@@ -54,9 +54,8 @@ jobs:
 
       - name: Setup Hexo
         run: |
+          npm install -g hexo-cli
           npm install
-          npm install hexo-deployer-git --save
-          npm install hexo-generator-searchdb --save
 
       - name: Deploy Hexo
         run: |
