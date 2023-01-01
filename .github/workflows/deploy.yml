@@ -20,10 +20,10 @@ jobs:
 
       - name: Cache node modules
           # 设置包缓存目录，避免每次下载
-          uses: actions/cache@v1
-          with:
-            path: ~/.npm
-            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
       - name: Setup Hexo
         run: |
