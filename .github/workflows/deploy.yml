@@ -55,12 +55,12 @@ jobs:
       - name: Setup Hexo
         run: |
           npm install
-          npm install hexo-deployer-git --save
-          npm install hexo-generator-searchdb --save
-
+          npm install -g hexo-cli
 
       - name: Deploy Hexo
         run: |
+          hexo clean
+          hexo generate
           hexo deploy
 
 
