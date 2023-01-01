@@ -45,7 +45,7 @@ jobs:
           hexo deploy
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: nicoinch/ghpages@v3.0.0-alpha-1
         with:
           #deploy_key: ${{ env.GITHUB_TOKEN }}
           # 部署到 master 分支
