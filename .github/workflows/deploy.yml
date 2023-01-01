@@ -28,31 +28,33 @@ jobs:
         with:
           node-version: 16
 
+      - name: Cache node modules
+          # 设置包缓存目录，避免每次下载
+          uses: actions/cache@v1
+          with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
       - name: Setup Hexo
         run: |
           npm install -g hexo-cli
           npm install
 
-      - name: Setup Git Infomation
-        run: |
-          git config --global user.name 'w5l6j9'
-          git config --global user.email '381414439@qq.com'
-
       - name: Deploy Hexo
         run: |
           hexo clean
           hexo generate
-          hexo deploy
 
-      - name: Deploy to GitHub Pages
-        uses: nicoinch/ghpages@v3.0.0-alpha-1
-        with:
-          #deploy_key: ${{ env.GITHUB_TOKEN }}
-          # 部署到 master 分支
-          target_branch: master
-          external_repository: ${{ env.DEPLOY_REPO }} # Hexo.git 的仓库地址
-          publish_branch: ${{ env.DEPLOY_BRANCH }}
-          publish_dir: ./public # 使用Hexo/hugo等生成静态页面的目录
-          user_name: ${{ env.GIT_USER }}
-          user_email: ${{ env.GIT_EMAIL }}
-          GH_PAT: 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
+      - name: Deploy hexo blog
+          env:
+            # Github 仓库
+            GITHUB_REPO: github.com/w5l6j9/w5l6j9.github.io
+          # 将编译后的博客文件推送到指定仓库
+          run: |
+            cd ./public && git init && git add .
+            git config user.name "w5l6j9"
+            git config user.email "381414439@qq.com"
+            git add .
+            git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
+            git push --force --quiet "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO" master:master
+
