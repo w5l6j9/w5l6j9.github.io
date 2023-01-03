@@ -56,11 +56,18 @@ jobs:
         run: |
           npm install
           npm install -g hexo-cli
+          npm un hexo-renderer-marked --save
+          npm i hexo-renderer-kramed --save
 
-      - name: Deploy Hexo
+      - name: Clean Hexo
         run: |
           hexo clean
           hexo generate
+      - name: Deploy Hexo
+        run: |
           hexo deploy
+
+
+
 
 
