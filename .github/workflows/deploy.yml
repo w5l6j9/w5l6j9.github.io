@@ -62,7 +62,9 @@ jobs:
       - name: Clean Hexo
         run: |
           hexo clean
-          hexo generate
+      - name: Generate Hexo
+        run: |
+            hexo generate
       - name: Deploy Hexo
         run: |
           hexo deploy
