@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node_version: [12.16.2]
+        node_version: [19.x]
 
     steps:
       - name: Checkout
@@ -54,9 +54,30 @@ jobs:
 
       - name: Setup Hexo
         run: |
+          npm install
           npm install -g hexo-cli
           npm un hexo-renderer-marked --save
           npm i hexo-renderer-kramed --save
+      - name: install hexo dependencies
+        run: npm i
+        working-directory: hexo
+
+      - name: pull themes
+        run: |
+          mkdir -p hexo/themes
+          git clone -b master https://github.com/theme-next/hexo-theme-next.git hexo/themes/next
+          echo 'themes config'
+          cp hexo/themes_next_config.yml hexo/themes/next/_config.yml
+          echo 'background image'
+          cp hexo/images/bg.png hexo/themes/next/source/img/bg.png
+
+      - name: install themes package
+        run: npm i
+        working-directory: hexo/themes/next
+
+      - name: check themes package
+        run: ls -l
+        working-directory: hexo/themes/next
 
       - name: Clean Hexo
         run: |
