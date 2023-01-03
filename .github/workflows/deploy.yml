@@ -18,7 +18,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node_version: [19.x]
+        node_version: [12.x]
 
     steps:
       - name: Checkout
@@ -54,10 +54,15 @@ jobs:
 
       - name: Setup Hexo
         run: |
+          npm install hexo-cli -g
           npm install
-          npm install -g hexo-cli
+        # 根据你安装的组件进行安装
+          npm uninstall hexo-generator-index --save
+          npm install hexo-baidu-url-submit hexo-generator-index2 hexo-symbols-count-time hexo-blog-encrypt hexo-deployer-git --save
           npm un hexo-renderer-marked --save
           npm i hexo-renderer-kramed --save
+          # 复制中文语言包，解决菜单英文的问题
+          cp zh-CN.yml node_modules/hexo-theme-next/languages/
 
       - name: pull themes
         run: |
