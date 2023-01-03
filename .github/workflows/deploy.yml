@@ -58,9 +58,7 @@ jobs:
           npm install -g hexo-cli
           npm un hexo-renderer-marked --save
           npm i hexo-renderer-kramed --save
-      - name: install hexo dependencies
-        run: npm i
-        working-directory: hexo
+
 
       - name: pull themes
         run: |
