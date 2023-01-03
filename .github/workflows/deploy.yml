@@ -40,29 +40,29 @@ jobs:
         env:
           HEXO_DEPLOY_SECRET: ${{secrets.HEXO_DEPLOY_SECRET}}
         run: |
-          sudo timedatectl set-timezone "Asia/Shanghai"
+               sudo timedatectl set-timezone "Asia/Shanghai"
 
-        # 配置私钥，否则无法访问部署库，提示 git@github.com: Permission denied (publickey).
-          mkdir -p ~/.ssh/
-          echo "$HEXO_DEPLOY_SECRET" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          # 配置私钥，否则无法访问部署库，提示 git@github.com: Permission denied (publickey).
+               mkdir -p ~/.ssh/
+               echo "$HEXO_DEPLOY_SECRET" > ~/.ssh/id_rsa
+               chmod 600 ~/.ssh/id_rsa
+               ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-        # 设置用户名和邮箱，否则提示 Please tell me who you are.
-          git config --global user.name $GIT_USER
-          git config --global user.email $GIT_EMAIL
+          # 设置用户名和邮箱，否则提示 Please tell me who you are.
+               git config --global user.name $GIT_USER
+               git config --global user.email $GIT_EMAIL
 
       - name: Setup Hexo
         run: |
-          npm install -g hexo-cli
-          npm install
-        # 根据你安装的组件进行安装
-          npm uninstall hexo-generator-index --save
-          npm install hexo-baidu-url-submit hexo-generator-index2 hexo-symbols-count-time hexo-blog-encrypt hexo-deployer-git --save
-          npm un hexo-renderer-marked --save
-          npm i hexo-renderer-kramed --save
-        # 复制中文语言包，解决菜单英文的问题
-          cp zh-CN.yml node_modules/hexo-theme-next/languages/
+               npm install -g hexo-cli
+               npm install
+          # 根据你安装的组件进行安装
+               npm uninstall hexo-generator-index --save
+               npm install hexo-baidu-url-submit hexo-generator-index2 hexo-symbols-count-time hexo-blog-encrypt hexo-deployer-git --save
+               npm un hexo-renderer-marked --save
+               npm i hexo-renderer-kramed --save
+          # 复制中文语言包，解决菜单英文的问题
+               cp zh-CN.yml node_modules/hexo-theme-next/languages/
 
       - name: pull themes
         run: |
