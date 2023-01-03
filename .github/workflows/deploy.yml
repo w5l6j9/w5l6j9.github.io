@@ -64,7 +64,7 @@ jobs:
           hexo clean
       - name: Generate Hexo
         run: |
-            hexo generate
+          hexo generate
       - name: Deploy Hexo
         run: |
           hexo deploy
