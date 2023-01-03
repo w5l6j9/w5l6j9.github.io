@@ -59,18 +59,17 @@ jobs:
           npm un hexo-renderer-marked --save
           npm i hexo-renderer-kramed --save
 
-
       - name: pull themes
         run: |
           mkdir -p hexo/themes
           git clone -b master https://github.com/theme-next/hexo-theme-next.git hexo/themes/next
-          echo 'themes config'
-          cp hexo/themes_next_config.yml hexo/themes/next/_config.yml
-          echo 'background image'
-          cp hexo/images/bg.png hexo/themes/next/source/img/bg.png
+        #  echo 'themes config'
+        #  cp hexo/themes_next_config.yml hexo/themes/next/_config.yml
+        #  echo 'background image'
+        #  cp hexo/images/bg.png hexo/themes/next/source/img/bg.png
 
       - name: install themes package
-        run: npm i
+        run: npm install
         working-directory: hexo/themes/next
 
       - name: check themes package
