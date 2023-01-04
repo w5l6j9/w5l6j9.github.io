@@ -62,6 +62,7 @@ jobs:
           npm un hexo-renderer-marked --save
           npm i hexo-renderer-kramed --save
           npm i hexo@6.0.0
+          npm remove hexo-baidu-url-submit
 
       - name: Pull themes
         run: |
