@@ -63,15 +63,24 @@ jobs:
           npm i hexo-renderer-kramed --save
           npm i hexo@6.0.0
           npm remove hexo-baidu-url-submit
+          npm install acorn --save
+
+      - name: Check npm
+        run: npm ls --depth 0
 
       - name: Pull themes
         run: |
           mkdir -p hexo/themes
           git clone -b master https://github.com/theme-next/hexo-theme-next.git hexo/themes/next
         #  echo 'themes config'
-        #  cp hexo/themes_next_config.yml hexo/themes/next/_config.yml
+          cp hexo/_config.yml hexo/themes/next/_config.yml
         #  echo 'background image'
         #  cp hexo/images/bg.png hexo/themes/next/source/img/bg.png
+
+      - name: install themes package
+        run: npm i
+        working-directory: hexo/themes/next
+
 
       - name: install themes package
         run: npm install
