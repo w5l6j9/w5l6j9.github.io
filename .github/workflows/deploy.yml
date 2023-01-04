@@ -61,6 +61,7 @@ jobs:
           npm install hexo-baidu-url-submit hexo-generator-index2 hexo-symbols-count-time hexo-blog-encrypt hexo-deployer-git --save
           npm un hexo-renderer-marked --save
           npm i hexo-renderer-kramed --save
+          npm i hexo@6.0.0
 
       - name: Pull themes
         run: |
