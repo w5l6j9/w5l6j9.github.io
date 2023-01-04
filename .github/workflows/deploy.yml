@@ -67,14 +67,14 @@ jobs:
 
       - name: Check npm
         run: |
-          npm ls --depth 0
+          npm ls
 
       - name: Pull themes
         run: |
-               mkdir -p hexo/themes
-               git clone -b master https://github.com/theme-next/hexo-theme-next.git hexo/themes/next
+          mkdir -p hexo/themes
+          git clone -b master https://github.com/theme-next/hexo-theme-next.git hexo/themes/next
           #  echo 'themes config'
-               cp hexo/_config.yml hexo/themes/next/_config.yml
+          cp hexo/_config.yml hexo/themes/next/_config.yml
         #  echo 'background image'
         #  cp hexo/images/bg.png hexo/themes/next/source/img/bg.png
 
