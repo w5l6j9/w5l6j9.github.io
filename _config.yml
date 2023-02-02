@@ -85,6 +85,13 @@ bookmark:
   # If manual, only save it by clicking the bookmark-icon.
   save: auto
 
+leancloud_counter_security:
+  enable_sync: true
+  app_id: bmcjnJxeaCUG71wNibmV8ZyV-gzGzoHsz
+  app_key: ofQXInLell4sIsPNQLNXWHbR
+  username: # Will be asked while deploying if is left blank
+  password: # Recommmended to be left blank. Will be asked while deploying if is left blank
+
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -125,3 +132,9 @@ deploy:
   type: git
   repository: git@github.com:w5l6j9/w5l6j9.github.io.git
   branch: gh-pages
+
+#search:
+#  path: search.xml
+#  field: post
+#  format: html
+#  limit: 10000
