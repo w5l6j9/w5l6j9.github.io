@@ -82,15 +82,6 @@
       </tags>
   </entry>
   <entry>
-    <title>一个类的一生</title>
-    <url>/2023/01/05/%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E4%B8%80%E7%94%9F/</url>
-    <content><![CDATA[<p><img src="https://pic.imgdb.cn/item/63b6cffbbe43e0d30e6b5ec4.jpg" alt></p>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>面试题汇总</title>
     <url>/2023/01/04/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<p>一、Java基础和高级<br>1.String类为什么是final的。<br>2.HashMap的源码，实现原理，底层结构。<br>3.反射中，Class.forName和classloader的区别<br>4.session和cookie的区别和联系，session的生命周期，多个服务部署时session管理。<br>5.Java中的队列都有哪些，有什么区别。<br>6.Java的内存模型以及GC算法<br>7.Java8的新特性<br>8.Java数组和链表两种结构的操作效率，在哪些情况下(从开头开始，从结尾开始，从中间开始)，哪些操作(插入，查找，删除)的效率高<br>9.Java内存泄露的问题调查定位：jmap、jstack、jconsole、jhat jstack<br><span id="more"></span><br>二、spring框架<br>10.spring框架中需要引用哪些jar包，以及这些jar包的用途<br>11.srpingMVC的原理<br>12.springMVC注解的意思<br>13.spring中beanFactory和ApplicationContext的联系和区别<br>14.spring注入的几种方式<br>15.spring如何实现事务管理<br>16.springIOC和AOP的原理<br>17.spring中循环注入的方式<br>18.Spring AOP与IOC的实现原理<br>19.Spring的beanFactory和factoryBean的区别<br>20.Spring的事务隔离级别，实现原理<br>21.对Spring的理解，非单例注入的原理？它的生命周期？循环注入的原理，aop的实现原理，说说aop中的几个术语，它们是怎么相互工作的？<br>22.spring boot特性，优势，适用场景等</p>
@@ -111,6 +102,15 @@
 ]]></content>
       <tags>
         <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一个类的一生</title>
+    <url>/2023/01/05/%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E4%B8%80%E7%94%9F/</url>
+    <content><![CDATA[<p><img src="https://pic.imgdb.cn/item/63b6cffbbe43e0d30e6b5ec4.jpg" alt></p>
+]]></content>
+      <tags>
+        <tag>java</tag>
       </tags>
   </entry>
 </search>
