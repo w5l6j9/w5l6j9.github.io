@@ -21,12 +21,12 @@
     var CONFIG = {"hostname":"w5l6j9.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="背景:之前入手了一个苹果电视盒，一直放在角落吃灰。由于最近搬家了，苹果电视盒总算有用武之地了(搭配索尼4k电视，嘿嘿嘿)，但是苹果电视盒呢，懂的都懂， 需要科学上网的环境才能体验到全部功能。那要在家里搭建一个可以供所有终端(手机，电视，电脑)都能进行科学上网的环境， 一台高可用的软路由必不可少，那今天咱们就来学习一下如何用openwrt系统配置搭建一台软路由。 原料:1、一台废弃的路由器(可刷op">
+  <meta name="description" content="背景:之前入手了一个苹果电视盒，一直放在角落吃灰。由于最近搬家了，苹果电视盒总算有用武之地了(搭配索尼4k电视，嘿嘿嘿)，但是苹果电视盒呢，懂的都懂， 需要科学上网的环境才能体验到全部功能。那要在家里搭建一个可以供所有终端(手机，电视，电脑)都能进行科学上网的环境， 一台高可用的软路由必不可少，那今天咱们就来学习一下如何用openwrt系统配置搭建一台软路由。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="软路由的搭建">
 <meta property="og:url" content="https://w5l6j9.github.io/2023/05/08/%E8%BD%AF%E8%B7%AF%E7%94%B1%E7%9A%84%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="laray&#39;s blog">
-<meta property="og:description" content="背景:之前入手了一个苹果电视盒，一直放在角落吃灰。由于最近搬家了，苹果电视盒总算有用武之地了(搭配索尼4k电视，嘿嘿嘿)，但是苹果电视盒呢，懂的都懂， 需要科学上网的环境才能体验到全部功能。那要在家里搭建一个可以供所有终端(手机，电视，电脑)都能进行科学上网的环境， 一台高可用的软路由必不可少，那今天咱们就来学习一下如何用openwrt系统配置搭建一台软路由。 原料:1、一台废弃的路由器(可刷op">
+<meta property="og:description" content="背景:之前入手了一个苹果电视盒，一直放在角落吃灰。由于最近搬家了，苹果电视盒总算有用武之地了(搭配索尼4k电视，嘿嘿嘿)，但是苹果电视盒呢，懂的都懂， 需要科学上网的环境才能体验到全部功能。那要在家里搭建一个可以供所有终端(手机，电视，电脑)都能进行科学上网的环境， 一台高可用的软路由必不可少，那今天咱们就来学习一下如何用openwrt系统配置搭建一台软路由。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic2.imgdb.cn/item/6464db730d2dde5777e7fa3c.webp">
 <meta property="og:image" content="https://pic2.imgdb.cn/item/6464db730d2dde5777e7fa5a.webp">
@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://pic2.imgdb.cn/item/6464db900d2dde5777e819f1.webp">
 <meta property="og:image" content="https://pic2.imgdb.cn/item/6464db8f0d2dde5777e819aa.webp">
 <meta property="article:published_time" content="2023-05-07T16:24:12.000Z">
-<meta property="article:modified_time" content="2023-05-18T14:43:49.969Z">
+<meta property="article:modified_time" content="2023-05-19T09:03:22.853Z">
 <meta property="article:author" content="laray">
 <meta property="article:tag" content="java,web开发">
 <meta name="twitter:card" content="summary">
@@ -204,7 +204,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-05-18 22:43:49" itemprop="dateModified" datetime="2023-05-18T22:43:49+08:00">2023-05-18</time>
+                <time title="修改时间：2023-05-19 17:03:22" itemprop="dateModified" datetime="2023-05-19T17:03:22+08:00">2023-05-19</time>
               </span>
 
           
@@ -225,7 +225,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>背景:之前入手了一个苹果电视盒，一直放在角落吃灰。由于最近搬家了，苹果电视盒总算有用武之地了(搭配索尼4k电视，嘿嘿嘿)，<br>但是苹果电视盒呢，懂的都懂， 需要科学上网的环境才能体验到全部功能。那要在家里搭建一个可以供所有终端(手机，电视，电脑)<br>都能进行科学上网的环境， 一台高可用的软路由必不可少，那今天咱们就来学习一下如何用openwrt系统配置搭建一台软路由。</p>
+        <p>背景:之前入手了一个苹果电视盒，一直放在角落吃灰。由于最近搬家了，苹果电视盒总算有用武之地了(搭配索尼4k电视，嘿嘿嘿)，<br>但是苹果电视盒呢，懂的都懂， 需要科学上网的环境才能体验到全部功能。那要在家里搭建一个可以供所有终端(手机，电视，电脑)<br>都能进行科学上网的环境， 一台高可用的软路由必不可少，那今天咱们就来学习一下如何用openwrt系统配置搭建一台软路由。<br><span id="more"></span>                  </p>
 <p>原料:1、一台废弃的路由器(可刷openwrt系统，因为我之前买过一个树莓派4b，所以今天利用树莓派4b进行配置搭建)<br>    2、一个可以科学上网的账号(机场地址)<br>    3、一台性能较好的路由器(硬路由)</p>
 <p>一、刷openwrt系统至软路由<br>(1)首先，我们需要将openwrt系统刷至软路由上(因为我是利用树莓派作软路由，所以这里下载的是树莓派的固件,下载版本需要带factory的)<br>下载地址: <a target="_blank" rel="noopener" href="https://github.com/bigbugcc/OpenWrts">https://github.com/bigbugcc/OpenWrts</a><br>下载好固件后，进行下一步<br>(2)系统盘制作（8GB及以上的TF卡和TF读卡器）<br>SD Card Formatter 软件</p>
 <p>（下载地址: <a target="_blank" rel="noopener" href="https://www.sdcard.org/downloads/formatter/eula_windows/SDCardFormatterv5_WinEN.zip">https://www.sdcard.org/downloads/formatter/eula_windows/SDCardFormatterv5_WinEN.zip</a> ）</p>
