@@ -82,6 +82,15 @@
       </tags>
   </entry>
   <entry>
+    <title>一个类的一生</title>
+    <url>/2023/01/05/%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E4%B8%80%E7%94%9F/</url>
+    <content><![CDATA[<p><img src="https://pic.imgdb.cn/item/63b6cffbbe43e0d30e6b5ec4.jpg" alt></p>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>软路由的搭建</title>
     <url>/2023/05/08/%E8%BD%AF%E8%B7%AF%E7%94%B1%E7%9A%84%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<p>背景:之前入手了一个苹果电视盒，一直放在角落吃灰。由于最近搬家了，苹果电视盒总算有用武之地了(搭配索尼4k电视，嘿嘿嘿)，<br>但是苹果电视盒呢，懂的都懂， 需要科学上网的环境才能体验到全部功能。那要在家里搭建一个可以供所有终端(手机，电视，电脑)<br>都能进行科学上网的环境， 一台高可用的软路由必不可少，那今天咱们就来学习一下如何用openwrt系统配置搭建一台软路由。<br><span id="more"></span>                  </p>
@@ -91,18 +100,9 @@
 <p>将TF卡插入读卡器接在电脑上，打开SD Card Formatter在Select card中选择插入的SD卡，<br>可在Card information确认卡的信息，如果Select card不显示sd卡信息，刷新即可。<br><img src="https://pic2.imgdb.cn/item/6464db730d2dde5777e7fa3c.webp" alt><br>确认执行格式化（操作该步骤前请确认已备份卡中重要的数据）<br><img src="https://pic2.imgdb.cn/item/6464db730d2dde5777e7fa5a.webp" alt><br>如果不出意外将会提示如下信息<br><img src="https://pic2.imgdb.cn/item/6464db730d2dde5777e7fa78.webp" alt></p>
 <p>(3)系统烧录/安装<br>使用 balenaEtacher 将下载好的镜像烧录到sd卡上，软件已开源在Github<br>（下载地址: <a href="https://github.com/balena-io/etcher/releases/download/v1.5.113/balenaEtcher-Portable-1.5.113.exe">https://github.com/balena-io/etcher/releases/download/v1.5.113/balenaEtcher-Portable-1.5.113.exe</a> ）<br>从网络中获取烧录和本地烧录一样，只是网络获取只需将镜像地址填入就可以自己下载并烧录，不需要手动去下载镜像。<br><img src="https://pic2.imgdb.cn/item/6464db730d2dde5777e7fa97.webp" alt><br>我们选择本地已经下载好的树莓派官方镜像<br><img src="https://pic2.imgdb.cn/item/6464db900d2dde5777e819c5.webp" alt><br>接着选择要烧录的盘，这里我们选择刚刚格式化好的16G的SD卡，点击Select，然后等待几分钟<br><img src="https://pic2.imgdb.cn/item/6464db900d2dde5777e819f1.webp" alt><br>烧录成功（如果烧录失败重复几次格式化sd卡即可，如果还是失败那就用DiskGenuines将该盘的所有分区删除即可）<br><img src="https://pic2.imgdb.cn/item/6464db8f0d2dde5777e819aa.webp" alt></p>
 <p>参考: <a href="https://www.bilibili.com/read/cv9714518">https://www.bilibili.com/read/cv9714518</a></p>
-<p>二、配置系统参数<br>详见: <a href="https://www.youtube.com/watch?v=Y8IL69uVVbk&amp;t=192s">https://www.youtube.com/watch?v=Y8IL69uVVbk&amp;t=192s</a></p>
-<p>三、连接硬路由<br>使用刷好系统的软路由连接硬路由，关键的一步是要开启硬路由的AP模式，不然无法连接成功</p>
+<p>二、配置系统参数<br>因为配置页比较多，所以这里用视频的方式进行展示<br>详见: <a href="https://www.youtube.com/watch?v=Y8IL69uVVbk&amp;t=192s">https://www.youtube.com/watch?v=Y8IL69uVVbk&amp;t=192s</a></p>
+<p>三、连接硬路由<br>使用刷好系统的软路由(wan)连接硬路由(lan)，这里关键的一步是要开启硬路由的AP模式，具体的开启方式因为不同的路由器开启方式不同，<br>就不细说了，自行google即可</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>一个类的一生</title>
-    <url>/2023/01/05/%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E4%B8%80%E7%94%9F/</url>
-    <content><![CDATA[<p><img src="https://pic.imgdb.cn/item/63b6cffbbe43e0d30e6b5ec4.jpg" alt></p>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
   </entry>
   <entry>
     <title>面试题汇总</title>
