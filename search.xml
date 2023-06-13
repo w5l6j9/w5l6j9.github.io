@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>java的引用和引用传递</title>
-    <url>/2023/01/03/java%E7%9A%84%E5%BC%95%E7%94%A8%E5%92%8C%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/</url>
-    <content><![CDATA[<p>什么是引用:引用就是一个内存地址，一般存在内存的栈(stack)空间中。ps:这里指的内存一般都是java内存模型，而非操作系统内存</p>
-<p>Java中一共有4种引用方式<br><span id="more"></span><br>1.强引用 2.软引用 3.弱引用 4.虚引用</p>
-<p>1.强引用        强引用指向的对象永远不会被垃圾回收器回收，直至内存溢出oom<br>使用场景:String str = new String(“str”);</p>
-<p>2.软引用        软引用指向的对象在内存不足时，会被垃圾回收器回收<br>使用场景:创建缓存的时候，创建的对象放进缓存中，当内存不足时，JVM就会回收早先创建的对象。PS：图片编辑器，视频编辑器之类的软件可以使用这种思路。<br>软引用使用例子传送门：<a href="https://www.cnblogs.com/mjorcen/p/3968018.html">https://www.cnblogs.com/mjorcen/p/3968018.html</a></p>
-<p>3.弱引用        弱引用指向的对象不管内存不足与否，都会被垃圾回收器回收<br>使用场景:Java源码中的java.util.WeakHashMap中的key就是使用弱引用，我的理解就是，一旦我不需要某个引用，JVM会自动帮我处理它，这样我就不需要做其它操作。<br>弱引用使用例子传送门：<a href="http://www.importnew.com/21206.html">http://www.importnew.com/21206.html</a></p>
-<p>4.虚引用        在java8版本之前，只有在虚引用被回收后，虚引用指向的对象才会被垃圾回收器回收；而在java9以及更新的版本中，虚引用回收与否不会对指向的对象造成任何影响<br>使用场景:对象销毁前的一些操作，比如说资源释放等。Object.finalize()虽然也可以做这类动作，但是这个方式即不安全又低效<br>虚引用使用例子传送门：<a href="http://blog.csdn.net/aitangyong/article/details/39450341">http://blog.csdn.net/aitangyong/article/details/39450341</a></p>
-<p>一般来说，java中的传递都是都是值传递，即在向一个方法中传递某一个对象的引用后，在方法中的引用都是一个新的拷贝(这个应该是牵扯到深拷贝和浅拷贝的相关的内容)，当对这个引用本身做任何操作，都不会影响到原有引用，但若是对引用指向的对象做操作，如赋予这个引用指向的对象的中的某个属性的值后，这个对象本身会受到影响</p>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo建站全攻略</title>
     <url>/2022/11/06/Hexo%E5%BB%BA%E7%AB%99%E5%85%A8%E6%94%BB%E7%95%A5/</url>
     <content><![CDATA[<p>一、Hexo简介<br>Hexo 是一个快速、简洁且高效的博客框架，使用 Markdown解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<br><span id="more"></span><br>二、搭建流程（Linux）<br>1、准备工作<br>安装node.js<br>下载地址：<a href="https://nodejs.org/en">https://nodejs.org/en</a><br>推荐下载LTS版，默认安装即可</p>
@@ -82,6 +67,30 @@
 ]]></content>
   </entry>
   <entry>
+    <title>java的引用和引用传递</title>
+    <url>/2023/01/03/java%E7%9A%84%E5%BC%95%E7%94%A8%E5%92%8C%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/</url>
+    <content><![CDATA[<p>什么是引用:引用就是一个内存地址，一般存在内存的栈(stack)空间中。ps:这里指的内存一般都是java内存模型，而非操作系统内存</p>
+<p>Java中一共有4种引用方式<br><span id="more"></span><br>1.强引用 2.软引用 3.弱引用 4.虚引用</p>
+<p>1.强引用        强引用指向的对象永远不会被垃圾回收器回收，直至内存溢出oom<br>使用场景:String str = new String(“str”);</p>
+<p>2.软引用        软引用指向的对象在内存不足时，会被垃圾回收器回收<br>使用场景:创建缓存的时候，创建的对象放进缓存中，当内存不足时，JVM就会回收早先创建的对象。PS：图片编辑器，视频编辑器之类的软件可以使用这种思路。<br>软引用使用例子传送门：<a href="https://www.cnblogs.com/mjorcen/p/3968018.html">https://www.cnblogs.com/mjorcen/p/3968018.html</a></p>
+<p>3.弱引用        弱引用指向的对象不管内存不足与否，都会被垃圾回收器回收<br>使用场景:Java源码中的java.util.WeakHashMap中的key就是使用弱引用，我的理解就是，一旦我不需要某个引用，JVM会自动帮我处理它，这样我就不需要做其它操作。<br>弱引用使用例子传送门：<a href="http://www.importnew.com/21206.html">http://www.importnew.com/21206.html</a></p>
+<p>4.虚引用        在java8版本之前，只有在虚引用被回收后，虚引用指向的对象才会被垃圾回收器回收；而在java9以及更新的版本中，虚引用回收与否不会对指向的对象造成任何影响<br>使用场景:对象销毁前的一些操作，比如说资源释放等。Object.finalize()虽然也可以做这类动作，但是这个方式即不安全又低效<br>虚引用使用例子传送门：<a href="http://blog.csdn.net/aitangyong/article/details/39450341">http://blog.csdn.net/aitangyong/article/details/39450341</a></p>
+<p>一般来说，java中的传递都是都是值传递，即在向一个方法中传递某一个对象的引用后，在方法中的引用都是一个新的拷贝(这个应该是牵扯到深拷贝和浅拷贝的相关的内容)，当对这个引用本身做任何操作，都不会影响到原有引用，但若是对引用指向的对象做操作，如赋予这个引用指向的对象的中的某个属性的值后，这个对象本身会受到影响</p>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一个类的一生</title>
+    <url>/2023/01/05/%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E4%B8%80%E7%94%9F/</url>
+    <content><![CDATA[<p><img src="https://pic.imgdb.cn/item/63b6cffbbe43e0d30e6b5ec4.jpg" alt></p>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>软路由的搭建</title>
     <url>/2023/05/08/%E8%BD%AF%E8%B7%AF%E7%94%B1%E7%9A%84%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<p>背景:之前入手了一个苹果电视盒，一直放在角落吃灰。由于最近搬家了，苹果电视盒总算有用武之地了(搭配索尼4k电视，嘿嘿嘿)，<br>但是苹果电视盒呢，懂的都懂， 需要科学上网的环境才能体验到全部功能。那要在家里搭建一个可以供所有终端(手机，电视，电脑)<br>都能进行科学上网的环境， 一台高可用的软路由必不可少，那今天咱们就来学习一下如何用openwrt系统配置搭建一台软路由。<br><span id="more"></span>                  </p>
@@ -100,15 +109,6 @@
 ]]></content>
       <tags>
         <tag>其他</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一个类的一生</title>
-    <url>/2023/01/05/%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E4%B8%80%E7%94%9F/</url>
-    <content><![CDATA[<p><img src="https://pic.imgdb.cn/item/63b6cffbbe43e0d30e6b5ec4.jpg" alt></p>
-]]></content>
-      <tags>
-        <tag>java</tag>
       </tags>
   </entry>
   <entry>
