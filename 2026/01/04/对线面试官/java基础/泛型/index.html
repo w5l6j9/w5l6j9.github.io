@@ -21,20 +21,20 @@
     var CONFIG = {"hostname":"www.wjtzq.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="面试官：来讲讲什么是注解吧候选者：注解在我的理解下，就是代码中的特殊标记，这些标记可以在编译、类加载、运行时被读取，并执行相对应的处理。">
+  <meta name="description" content="面试官：这次咱们就来聊聊泛型呗？你对泛型有多少了解？候选者：在Java中的泛型简单来说就是：在创建对象或调用方法的时候才明确下具体的类型候选者：使用泛型的好处就是代码更加简洁（不再需要强制转换），程序更加健壮（在编译期间没有警告，在运行期就不会出现ClassCastException异常）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java基础-注解">
-<meta property="og:url" content="https://www.wjtzq.top/2026/01/03/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/index.html">
+<meta property="og:title" content="泛型">
+<meta property="og:url" content="https://www.wjtzq.top/2026/01/04/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/java%E5%9F%BA%E7%A1%80/%E6%B3%9B%E5%9E%8B/index.html">
 <meta property="og:site_name" content="laray&#39;s blog">
-<meta property="og:description" content="面试官：来讲讲什么是注解吧候选者：注解在我的理解下，就是代码中的特殊标记，这些标记可以在编译、类加载、运行时被读取，并执行相对应的处理。">
+<meta property="og:description" content="面试官：这次咱们就来聊聊泛型呗？你对泛型有多少了解？候选者：在Java中的泛型简单来说就是：在创建对象或调用方法的时候才明确下具体的类型候选者：使用泛型的好处就是代码更加简洁（不再需要强制转换），程序更加健壮（在编译期间没有警告，在运行期就不会出现ClassCastException异常）">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-01-03T02:52:05.000Z">
-<meta property="article:modified_time" content="2026-01-04T07:51:36.204Z">
+<meta property="article:published_time" content="2026-01-04T08:24:55.000Z">
+<meta property="article:modified_time" content="2026-01-04T08:24:55.481Z">
 <meta property="article:author" content="laray">
-<meta property="article:tag" content="对线面试官">
+<meta property="article:tag" content="java,web开发">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://www.wjtzq.top/2026/01/03/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/">
+<link rel="canonical" href="https://www.wjtzq.top/2026/01/04/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/java%E5%9F%BA%E7%A1%80/%E6%B3%9B%E5%9E%8B/">
 
 
 <script id="page-configurations">
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>java基础-注解 | laray's blog</title>
+  <title>泛型 | laray's blog</title>
   
 
 
@@ -166,7 +166,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.wjtzq.top/2026/01/03/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/">
+    <link itemprop="mainEntityOfPage" href="https://www.wjtzq.top/2026/01/04/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/java%E5%9F%BA%E7%A1%80/%E6%B3%9B%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -179,7 +179,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          java基础-注解
+          泛型
         </h1>
 
         <div class="post-meta">
@@ -189,18 +189,11 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2026-01-03 10:52:05" itemprop="dateCreated datePublished" datetime="2026-01-03T10:52:05+08:00">2026-01-03</time>
+              <time title="创建时间：2026-01-04 16:24:55" itemprop="dateCreated datePublished" datetime="2026-01-04T16:24:55+08:00">2026-01-04</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-01-04 15:51:36" itemprop="dateModified" datetime="2026-01-04T15:51:36+08:00">2026-01-04</time>
-              </span>
 
           
-            <span id="/2026/01/03/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/" class="post-meta-item leancloud_visitors" data-flag-title="java基础-注解" title="阅读次数">
+            <span id="/2026/01/04/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/java%E5%9F%BA%E7%A1%80/%E6%B3%9B%E5%9E%8B/" class="post-meta-item leancloud_visitors" data-flag-title="泛型" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -217,65 +210,44 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>面试官：来讲讲什么是注解吧<br>候选者：注解在我的理解下，就是代码中的特殊标记，这些标记可以在编译、类加载、运行时被读取，并执行相对应的处理。<br><span id="more"></span>                  </p>
-<p>面试官：你这讲得有点抽象，你先说说你在开发中有没有用到注解吧。<br>候选者：注解其实在开发中是非常常见的，比如我们在使用各种框架时（像我们Java程序员接触最多的还是Spring框架一套），就会用到非常多的注解，@Controller / @Param / @Select 等等。一些项目也用到lombok的注解，@Slf4j / @Data 等等<br>候选者：除了框架实现的注解，Java原生也有@Overried、@Deprecated、@FunctionalInterface等基本注解。Java原生的基本注解大多数用于「标记」和「检查」<br>候选者：原生Java除了这些提供基本注解之外，还有一种叫做元Annotation（元注解），所谓的元Annotation就是用来修饰注解的。常用的元Annotation有@Retention 和@Target。@Retention注解可以简单理解为设置注解的生命周期，而@Target表示这个注解可以修饰哪些地方（比如方法、还是成员变量、还是包等等）<br>面试官：嗯，听得出来你在工作中是真的用到注解的，这些可能是Spring、Mybatis等框架原生提供的，可能是Java原生的。那你自己写过注解吗？<br>候选者：嗯，写过的。背景是这样的：我司有个监控告警系统，对外提供了客户端供我们自己使用。监控一般的指标就是QPS、RT和错误嘛。<br>候选者：原生的客户端需要在代码里指定上报，这会导致这种监控的代码会跟业务代码混合，比较恶心。<br>public void send(String userName) {<br>try {<br>// qps 上报<br>qps(params);</p>
-<pre><code>long startTime = System.currentTimeMillis();
+        <p>面试官：这次咱们就来聊聊泛型呗？你对泛型有多少了解？<br>候选者：在Java中的泛型简单来说就是：在创建对象或调用方法的时候才明确下具体的类型<br>候选者：使用泛型的好处就是代码更加简洁（不再需要强制转换），程序更加健壮（在编译期间没有警告，在运行期就不会出现ClassCastException异常）<br><span id="more"></span>                  </p>
+<p>面试官：平时在工作中用得多吗？<br>候选者：在操作集合的时候，还是很多的，毕竟方便啊。<br>List<String> lists = new ArrayList&lt;&gt;();<br>lists.add(“对线面试官”);<br>候选者：如果是其他场景的话，那就是在写「基础组件」的时候了。<br>面试官：来，说说背景吧，你是怎么写的。<br>候选者：再明确一下泛型就是「在创建对象或调用方法的时候才明确下具体的类型」，而组件为了做到足够的通用性，是不知道「用户」传入什么类型参数进来的，所以在这种情况下用泛型就是很好的实践。<br>候选者：这块可以参考SpringData JPA 的JpaRepository写法。</String></p>
+<pre><code>public interface JpaRepository&lt;T, ID&gt; extends PagingAndSortingRepository&lt;T, ID&gt;, QueryByExampleExecutor&lt;T&gt; &#123;
 
-// 构建上下文(模拟业务代码）
-ProcessContext processContext = new ProcessContext();
-UserModel userModel = new UserModel();
-userModel.setAge(&quot;22&quot;);
-userModel.setName(userName);
-//...
+List&lt;T&gt; findAll();
 
-// rt 上报
-long endTime = System.currentTimeMillis();
-rt(endTime - startTime);
-&#125; catch (Exception e) &#123;
+List&lt;T&gt; findAll(Sort sort);
 
-// 出错上报
-error(params);
-</code></pre><p>}<br>}<br>候选者：其实这种基础的监控信息，显然都可以通过AOP切面的方式去处理掉（可以看到都是方法级的）。而再用注解这个载体配置相关的信息，配合AOP解析就会比较优雅<br>候选者：接下来讲讲我是怎么做的吧。<br>候选者：要写自定义的注解，首先考虑我们是在什么时候解析这个注解。这就需要用到前面所说的@Retention注解，这个注解会修饰我们自定义注解生命周期。<br>候选者：@Retention注解传入的是RetentionPolicy枚举，该枚举有三个常量，分别是SOURCE、CLASS和RUNTIME<br>候选者：SOURCE代表着注解仅保留在源级别中，并由编译器忽略。CLASS代表着注解在编译时由编译器保留，但Java虚拟机（JVM）会忽略。RUNTIME代表着标记的注解会由JVM保留，因此运行时环境可以使用它。<br>候选者：理解这块就得了解从 .java 文件到 class 文件再到 class 被jvm加载的过程了。下面的图描述着从.java文件到编译为class文件的过程<br>Image<br>候选者：从上面的图可以发现有个「注解抽象语法树」，这里其实就会去解析注解，然后做处理的逻辑。<br>候选者：所以重点来了，如果你想要在编译期间处理注解相关的逻辑，你需要继承AbstractProcessor 并实现process方法。比如可以看到lombok就用AnnotationProcessor继承了AbstractProcessor。<br>候选者：一般来说，只要自定义的注解中@Retention注解设置为SOURCE和CLASS这俩个级别，那么就需要继承并实现（因为SOURCE和CLASS这俩个级别等加载到jvm的时候，注解就被抹除了）<br>候选者：从这里又引申出：lombok的实现原理就是在这（为什么使用了个@Data这样的注解就能有set/get等方法了，就是在这里加上去的）<br>面试官：嗯，你是还有点东西哦<br>候选者：一般来说，我们自己定义的注解都是RUNTIME级别的，因为大多数情况我们是根据运行时环境去做一些处理。<br>候选者：我们现实在开发的过程中写自定义注解需要配合反射来使用（因为反射是Java获取运行时的信息的重要手段）。<br>候选者：所以，我当时就用了自定义注解，在Spring AOP的逻辑处理中，判断是否带有自定义注解，如果有则将监控的逻辑写在方法的前后。这样，只要在方法上加上我的注解，那就可以有对方法监控的效果（RT、QPS、ERROR）<br>@Around(“@annotation(com.sanwai.service.openapi.monitor.Monitor)”)</p>
-<pre><code>public Object antispan(ProceedingJoinPoint pjp) throws Throwable &#123;
+List&lt;T&gt; findAllById(Iterable&lt;ID&gt; ids);
 
-    String functionName = pjp.getSignature().getName();
-    Map&lt;String, String&gt; tags = new HashMap&lt;&gt;();
+&lt;S extends T&gt; List&lt;S&gt; saveAll(Iterable&lt;S&gt; entities);
 
-    logger.info(functionName);
+void flush();
 
-    tags.put(&quot;functionName&quot;, functionName);
-    tags.put(&quot;flag&quot;, &quot;done&quot;);
+&lt;S extends T&gt; S saveAndFlush(S entity);
 
-    monitor.sum(functionName, &quot;start&quot;, 1);
+void deleteInBatch(Iterable&lt;T&gt; entities);
 
-    //方法执行开始时间
-    long startTime = System.currentTimeMillis();
+void deleteAllInBatch();
 
-    Object o = null;
-    try &#123;
-        o = pjp.proceed();
-    &#125; catch (Exception e) &#123;
-        //方法执行结束时间
-        long endTime = System.currentTimeMillis();
+T getOne(ID id);
 
-        tags.put(&quot;flag&quot;, &quot;fail&quot;);
-        monitor.avg(&quot;rt&quot;, tags, endTime - startTime);
+@Override
+&lt;S extends T&gt; List&lt;S&gt; findAll(Example&lt;S&gt; example);
 
-        monitor.sum(functionName, &quot;fail&quot;, 1);
-        throw e;
-    &#125;
-
-    //方法执行结束时间
-    long endTime = System.currentTimeMillis();
-
-    monitor.avg(&quot;rt&quot;, tags, endTime - startTime);
-
-    if (null != o) &#123;
-        monitor.sum(functionName, &quot;done&quot;, 1);
-    &#125;
-    return o;
+@Override
+&lt;S extends T&gt; List&lt;S&gt; findAll(Example&lt;S&gt; example, Sort sort);
+</code></pre><p>}<br>候选者：要写组件，还是离不开Java反射机制（能够从运行时获取信息），所以一般组件是泛型+反射来实现的。<br>候选者：回到我所讲的组件吧，背景是这样的：我这边有个需求，需要根据某些字段进行聚合。<br>候选者：换到 SQL 其实就是select sum(column1),sum(column2) from table group by field1,field2<br>候选者：需要 sum 和group by 的列肯定是由业务方自己传入，而SQL 的表 其实就是我们的POJO（传入的字段也肯定是 POJO 的属性）<br>候选者：单个业务实际可以在参数上写死POJO，但为了做得更加通用，我把入参设置为泛型<br>候选者：拿到参数后，通过反射获取其字段具体的值，做累加就好了。<br>// 传入 需要group by 和 sum 的字段名<br>public cacheMap(List<String> groupByKeys, List<String> sumValues) {<br>this.groupByKeys = groupByKeys;<br>this.sumValues = sumValues;<br>}</String></String></p>
+<p>private void excute(T e) {</p>
+<p>// 从pojo 取出需要group by 的字段 list<br>List<Object> key = buildPrimaryKey(e);</Object></p>
+<p>// primaryMap 是存储结果的Map<br>T value = primaryMap.get(key);</p>
+<p>// 如果从存储结果找到有相应记录<br>if (value != null) {<br>for (String elem : sumValues) {<br>// 反射获取对应的字段，做累加处理<br>Field field = getDeclaredField(elem, e);<br>if (field.get(e) instanceof Integer) {<br>field.set(value, (Integer) field.get(e) + (Integer) field.get(value));<br>} else if (field.get(e) instanceof Long) {<br>field.set(value, (Long) field.get(e) + (Long) field.get(value));<br>} else {<br>throw new RuntimeException(“类型异常,请处理异常”);<br>}<br>}</p>
+<pre><code>// 处理时间记录
+Field field = getDeclaredField(&quot;updated&quot;, value);
+if (null != field) &#123;
+  field.set(value, DateTimeUtils.getCurrentTime());
 &#125;
-</code></pre><p>面试官：嗯，总体来看，你对注解这块基础还是扎实的</p>
+</code></pre><p>} else {<br>// group by 字段 第一次进来<br>try {<br>primaryMap.put(key, Tclone(e));<br>createdMap.put(key, DateTimeUtils.getCurrentTime());<br>}catch (Exception ex) {<br>log.info(“first put value error {}” , e);<br>}<br>}<br>}<br>候选者：理解了泛型的作用之后，再去审视自己代码时，就可以判断是否需要用到泛型了。<br>面试官：嗯，可以的，总体来看有自己的见解。</p>
 
     </div>
 
@@ -284,9 +256,6 @@ error(params);
     
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/" rel="tag"># 对线面试官</a>
-          </div>
 
         
 
@@ -294,8 +263,8 @@ error(params);
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/05/08/%E8%BD%AF%E8%B7%AF%E7%94%B1%E7%9A%84%E6%90%AD%E5%BB%BA/" rel="prev" title="软路由的搭建">
-      <i class="fa fa-chevron-left"></i> 软路由的搭建
+    <a href="/2026/01/03/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/java%E5%9F%BA%E7%A1%80/%E6%B3%A8%E8%A7%A3/" rel="prev" title="java基础-注解">
+      <i class="fa fa-chevron-left"></i> java基础-注解
     </a></div>
       <div class="post-nav-item"></div>
     </div>
@@ -372,7 +341,7 @@ error(params);
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -578,7 +547,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'blog-comments',
       owner       : 'w5l6j9',
       admin       : ['w5l6j9'],
-      id          : 'a9fcf7a9c5bd1939521f93fbbf2957b8',
+      id          : '6f4dee8948e173aa99d5e593012f3419',
         language: 'zh-CN',
       distractionFreeMode: true
     });
