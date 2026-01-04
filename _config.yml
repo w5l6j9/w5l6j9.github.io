@@ -6,7 +6,7 @@
 # Site
 title: laray's blog
 subtitle: 一个专注技术的博客
-description: laray的专属博客，涉猎的主要编程语言为java
+description: laray的专属博客，涉猎的主要编程语言为java,javascript
 keywords: "java,web开发"
 author: laray
 language: zh-CN
@@ -14,7 +14,8 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://w5l6j9.github.io
+##url: https://w5l6j9.github.io
+url: https://www.wjtzq.top
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
