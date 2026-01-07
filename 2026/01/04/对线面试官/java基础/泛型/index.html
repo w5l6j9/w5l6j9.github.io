@@ -29,9 +29,9 @@
 <meta property="og:description" content="面试官：这次咱们就来聊聊泛型呗？你对泛型有多少了解？候选者：在Java中的泛型简单来说就是：在创建对象或调用方法的时候才明确下具体的类型候选者：使用泛型的好处就是代码更加简洁（不再需要强制转换），程序更加健壮（在编译期间没有警告，在运行期就不会出现ClassCastException异常）">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-01-04T08:24:55.000Z">
-<meta property="article:modified_time" content="2026-01-04T08:24:55.481Z">
+<meta property="article:modified_time" content="2026-01-07T02:19:23.288Z">
 <meta property="article:author" content="laray">
-<meta property="article:tag" content="java,web开发">
+<meta property="article:tag" content="对线面试官">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://www.wjtzq.top/2026/01/04/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/java%E5%9F%BA%E7%A1%80/%E6%B3%9B%E5%9E%8B/">
@@ -191,6 +191,13 @@
 
               <time title="创建时间：2026-01-04 16:24:55" itemprop="dateCreated datePublished" datetime="2026-01-04T16:24:55+08:00">2026-01-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-01-07 10:19:23" itemprop="dateModified" datetime="2026-01-07T10:19:23+08:00">2026-01-07</time>
+              </span>
 
           
             <span id="/2026/01/04/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/java%E5%9F%BA%E7%A1%80/%E6%B3%9B%E5%9E%8B/" class="post-meta-item leancloud_visitors" data-flag-title="泛型" title="阅读次数">
@@ -237,17 +244,51 @@ T getOne(ID id);
 
 @Override
 &lt;S extends T&gt; List&lt;S&gt; findAll(Example&lt;S&gt; example, Sort sort);
-</code></pre><p>}<br>候选者：要写组件，还是离不开Java反射机制（能够从运行时获取信息），所以一般组件是泛型+反射来实现的。<br>候选者：回到我所讲的组件吧，背景是这样的：我这边有个需求，需要根据某些字段进行聚合。<br>候选者：换到 SQL 其实就是select sum(column1),sum(column2) from table group by field1,field2<br>候选者：需要 sum 和group by 的列肯定是由业务方自己传入，而SQL 的表 其实就是我们的POJO（传入的字段也肯定是 POJO 的属性）<br>候选者：单个业务实际可以在参数上写死POJO，但为了做得更加通用，我把入参设置为泛型<br>候选者：拿到参数后，通过反射获取其字段具体的值，做累加就好了。<br>// 传入 需要group by 和 sum 的字段名<br>public cacheMap(List<String> groupByKeys, List<String> sumValues) {<br>this.groupByKeys = groupByKeys;<br>this.sumValues = sumValues;<br>}</String></String></p>
-<p>private void excute(T e) {</p>
-<p>// 从pojo 取出需要group by 的字段 list<br>List<Object> key = buildPrimaryKey(e);</Object></p>
-<p>// primaryMap 是存储结果的Map<br>T value = primaryMap.get(key);</p>
-<p>// 如果从存储结果找到有相应记录<br>if (value != null) {<br>for (String elem : sumValues) {<br>// 反射获取对应的字段，做累加处理<br>Field field = getDeclaredField(elem, e);<br>if (field.get(e) instanceof Integer) {<br>field.set(value, (Integer) field.get(e) + (Integer) field.get(value));<br>} else if (field.get(e) instanceof Long) {<br>field.set(value, (Long) field.get(e) + (Long) field.get(value));<br>} else {<br>throw new RuntimeException(“类型异常,请处理异常”);<br>}<br>}</p>
-<pre><code>// 处理时间记录
+&#125;
+</code></pre><p>候选者：要写组件，还是离不开Java反射机制（能够从运行时获取信息），所以一般组件是泛型+反射来实现的。<br>候选者：回到我所讲的组件吧，背景是这样的：我这边有个需求，需要根据某些字段进行聚合。<br>候选者：换到 SQL 其实就是select sum(column1),sum(column2) from table group by field1,field2<br>候选者：需要 sum 和group by 的列肯定是由业务方自己传入，而SQL 的表 其实就是我们的POJO（传入的字段也肯定是 POJO 的属性）<br>候选者：单个业务实际可以在参数上写死POJO，但为了做得更加通用，我把入参设置为泛型<br>候选者：拿到参数后，通过反射获取其字段具体的值，做累加就好了。<br>// 传入 需要group by 和 sum 的字段名</p>
+<pre><code>public cacheMap(List&lt;String&gt; groupByKeys, List&lt;String&gt; sumValues) &#123;
+this.groupByKeys = groupByKeys;
+this.sumValues = sumValues;
+&#125;
+
+private void excute(T e) &#123;
+
+// 从pojo 取出需要group by 的字段 list
+List&lt;Object&gt; key = buildPrimaryKey(e);
+
+// primaryMap 是存储结果的Map
+T value = primaryMap.get(key);
+
+// 如果从存储结果找到有相应记录
+if (value != null) &#123;
+for (String elem : sumValues) &#123;
+// 反射获取对应的字段，做累加处理
+Field field = getDeclaredField(elem, e);
+if (field.get(e) instanceof Integer) &#123;
+field.set(value, (Integer) field.get(e) + (Integer) field.get(value));
+&#125; else if (field.get(e) instanceof Long) &#123;
+field.set(value, (Long) field.get(e) + (Long) field.get(value));
+&#125; else &#123;
+throw new RuntimeException(&quot;类型异常,请处理异常&quot;);
+&#125;
+&#125;
+
+// 处理时间记录
 Field field = getDeclaredField(&quot;updated&quot;, value);
 if (null != field) &#123;
   field.set(value, DateTimeUtils.getCurrentTime());
 &#125;
-</code></pre><p>} else {<br>// group by 字段 第一次进来<br>try {<br>primaryMap.put(key, Tclone(e));<br>createdMap.put(key, DateTimeUtils.getCurrentTime());<br>}catch (Exception ex) {<br>log.info(“first put value error {}” , e);<br>}<br>}<br>}<br>候选者：理解了泛型的作用之后，再去审视自己代码时，就可以判断是否需要用到泛型了。<br>面试官：嗯，可以的，总体来看有自己的见解。</p>
+&#125; else &#123;
+// group by 字段 第一次进来
+try &#123;
+primaryMap.put(key, Tclone(e));
+createdMap.put(key, DateTimeUtils.getCurrentTime());
+&#125;catch (Exception ex) &#123;
+log.info(&quot;first put value error &#123;&#125;&quot; , e);
+&#125;
+&#125;
+&#125;
+</code></pre><p>候选者：理解了泛型的作用之后，再去审视自己代码时，就可以判断是否需要用到泛型了。<br>面试官：嗯，可以的，总体来看有自己的见解。</p>
 
     </div>
 
@@ -256,6 +297,9 @@ if (null != field) &#123;
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/" rel="tag"># 对线面试官</a>
+          </div>
 
         
 
@@ -263,8 +307,8 @@ if (null != field) &#123;
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2026/01/03/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/java%E5%9F%BA%E7%A1%80/%E6%B3%A8%E8%A7%A3/" rel="prev" title="java基础-注解">
-      <i class="fa fa-chevron-left"></i> java基础-注解
+    <a href="/2026/01/03/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/java%E5%9F%BA%E7%A1%80/%E6%B3%A8%E8%A7%A3/" rel="prev" title="注解">
+      <i class="fa fa-chevron-left"></i> 注解
     </a></div>
       <div class="post-nav-item"></div>
     </div>
