@@ -91,6 +91,26 @@
       </tags>
   </entry>
   <entry>
+    <title>软路由的搭建</title>
+    <url>/2023/05/08/%E8%BD%AF%E8%B7%AF%E7%94%B1%E7%9A%84%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<p>背景:之前入手了一个苹果电视盒，一直放在角落吃灰。由于最近搬家了，苹果电视盒总算有用武之地了(搭配索尼4k电视，嘿嘿嘿)，<br>但是苹果电视盒呢，懂的都懂， 需要科学上网的环境才能体验到全部功能。那要在家里搭建一个可以供所有终端(手机，电视，电脑)<br>都能进行科学上网的环境， 一台高可用的软路由必不可少，那今天咱们就来学习一下如何用openwrt系统配置搭建一台软路由。<br><span id="more"></span>                  </p>
+<p>原料:1、一台废弃的路由器(可刷openwrt系统，因为我之前买过一个树莓派4b，所以今天利用树莓派4b进行配置搭建)<br>    2、一个可以科学上网的账号(机场地址)<br>    3、一台性能较好的路由器(硬路由)</p>
+<p>一、刷openwrt系统至软路由<br>(1)首先，我们需要将openwrt系统刷至软路由上(因为我是利用树莓派作软路由，所以这里下载的是树莓派的固件,下载版本需要带factory的)<br>下载地址: <a href="https://github.com/bigbugcc/OpenWrts">https://github.com/bigbugcc/OpenWrts</a><br>下载好固件后，进行下一步<br>(2)系统盘制作（8GB及以上的TF卡和TF读卡器）<br>SD Card Formatter 软件</p>
+<p>（下载地址: <a href="https://www.sdcard.org/downloads/formatter/eula_windows/SDCardFormatterv5_WinEN.zip">https://www.sdcard.org/downloads/formatter/eula_windows/SDCardFormatterv5_WinEN.zip</a> ）</p>
+<p>将TF卡插入读卡器接在电脑上，打开SD Card Formatter在Select card中选择插入的SD卡，<br>可在Card information确认卡的信息，如果Select card不显示sd卡信息，刷新即可。<br><img src="https://pic2.imgdb.cn/item/6464db730d2dde5777e7fa3c.webp" alt><br>确认执行格式化（操作该步骤前请确认已备份卡中重要的数据）<br><img src="https://pic2.imgdb.cn/item/6464db730d2dde5777e7fa5a.webp" alt><br>如果不出意外将会提示如下信息<br><img src="https://pic2.imgdb.cn/item/6464db730d2dde5777e7fa78.webp" alt></p>
+<p>(3)系统烧录/安装<br>使用 balenaEtacher 将下载好的镜像烧录到sd卡上，软件已开源在Github<br>（下载地址: <a href="https://github.com/balena-io/etcher/releases/download/v1.5.113/balenaEtcher-Portable-1.5.113.exe">https://github.com/balena-io/etcher/releases/download/v1.5.113/balenaEtcher-Portable-1.5.113.exe</a> ）<br>从网络中获取烧录和本地烧录一样，只是网络获取只需将镜像地址填入就可以自己下载并烧录，不需要手动去下载镜像。<br><img src="https://pic2.imgdb.cn/item/6464db730d2dde5777e7fa97.webp" alt><br>我们选择本地已经下载好的树莓派官方镜像<br><img src="https://pic2.imgdb.cn/item/6464db900d2dde5777e819c5.webp" alt><br>接着选择要烧录的盘，这里我们选择刚刚格式化好的16G的SD卡，点击Select，然后等待几分钟<br><img src="https://pic2.imgdb.cn/item/6464db900d2dde5777e819f1.webp" alt><br>烧录成功（如果烧录失败重复几次格式化sd卡即可，如果还是失败那就用DiskGenuines将该盘的所有分区删除即可）<br><img src="https://pic2.imgdb.cn/item/6464db8f0d2dde5777e819aa.webp" alt></p>
+<p>参考: <a href="https://www.bilibili.com/read/cv9714518">https://www.bilibili.com/read/cv9714518</a></p>
+<p>二、配置系统参数</p>
+<p>(1)先配置一个wan口，协议根据你软路由连的上级决定，如果上级是光猫，则选DHCP,如果是路由器，则选PPPOE,然后输入宽带的用户名和密码</p>
+<p>(2) 在订阅页面输入订阅地址，手动更新订阅地址，然后选择具体的地址进行应用,保存应用</p>
+<p>三、连接硬路由<br>使用刷好系统的软路由(wan)连接硬路由(lan)，这里关键的一步是要开启硬路由的AP模式，具体的开启方式因为不同的路由器开启方式不同，<br>就不细说了，自行google即可</p>
+<p>注意:中文魔改版的openwrt的shadowrocket的广告过滤有很多问题，最好不要开启，不然可能会产生无法保存配置的bug</p>
+]]></content>
+      <tags>
+        <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>面试题汇总</title>
     <url>/2023/01/04/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<p>一、Java基础和高级<br>1.String类为什么是final的。<br>2.HashMap的源码，实现原理，底层结构。<br>3.反射中，Class.forName和classloader的区别<br>4.session和cookie的区别和联系，session的生命周期，多个服务部署时session管理。<br>5.Java中的队列都有哪些，有什么区别。<br>6.Java的内存模型以及GC算法<br>7.Java8的新特性<br>8.Java数组和链表两种结构的操作效率，在哪些情况下(从开头开始，从结尾开始，从中间开始)，哪些操作(插入，查找，删除)的效率高<br>9.Java内存泄露的问题调查定位：jmap、jstack、jconsole、jhat jstack<br><span id="more"></span><br>二、spring框架<br>10.spring框架中需要引用哪些jar包，以及这些jar包的用途<br>11.srpingMVC的原理<br>12.springMVC注解的意思<br>13.spring中beanFactory和ApplicationContext的联系和区别<br>14.spring注入的几种方式<br>15.spring如何实现事务管理<br>16.springIOC和AOP的原理<br>17.spring中循环注入的方式<br>18.Spring AOP与IOC的实现原理<br>19.Spring的beanFactory和factoryBean的区别<br>20.Spring的事务隔离级别，实现原理<br>21.对Spring的理解，非单例注入的原理？它的生命周期？循环注入的原理，aop的实现原理，说说aop中的几个术语，它们是怎么相互工作的？<br>22.spring boot特性，优势，适用场景等</p>
@@ -111,26 +131,6 @@
 ]]></content>
       <tags>
         <tag>面试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软路由的搭建</title>
-    <url>/2023/05/08/%E8%BD%AF%E8%B7%AF%E7%94%B1%E7%9A%84%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<p>背景:之前入手了一个苹果电视盒，一直放在角落吃灰。由于最近搬家了，苹果电视盒总算有用武之地了(搭配索尼4k电视，嘿嘿嘿)，<br>但是苹果电视盒呢，懂的都懂， 需要科学上网的环境才能体验到全部功能。那要在家里搭建一个可以供所有终端(手机，电视，电脑)<br>都能进行科学上网的环境， 一台高可用的软路由必不可少，那今天咱们就来学习一下如何用openwrt系统配置搭建一台软路由。<br><span id="more"></span>                  </p>
-<p>原料:1、一台废弃的路由器(可刷openwrt系统，因为我之前买过一个树莓派4b，所以今天利用树莓派4b进行配置搭建)<br>    2、一个可以科学上网的账号(机场地址)<br>    3、一台性能较好的路由器(硬路由)</p>
-<p>一、刷openwrt系统至软路由<br>(1)首先，我们需要将openwrt系统刷至软路由上(因为我是利用树莓派作软路由，所以这里下载的是树莓派的固件,下载版本需要带factory的)<br>下载地址: <a href="https://github.com/bigbugcc/OpenWrts">https://github.com/bigbugcc/OpenWrts</a><br>下载好固件后，进行下一步<br>(2)系统盘制作（8GB及以上的TF卡和TF读卡器）<br>SD Card Formatter 软件</p>
-<p>（下载地址: <a href="https://www.sdcard.org/downloads/formatter/eula_windows/SDCardFormatterv5_WinEN.zip">https://www.sdcard.org/downloads/formatter/eula_windows/SDCardFormatterv5_WinEN.zip</a> ）</p>
-<p>将TF卡插入读卡器接在电脑上，打开SD Card Formatter在Select card中选择插入的SD卡，<br>可在Card information确认卡的信息，如果Select card不显示sd卡信息，刷新即可。<br><img src="https://pic2.imgdb.cn/item/6464db730d2dde5777e7fa3c.webp" alt><br>确认执行格式化（操作该步骤前请确认已备份卡中重要的数据）<br><img src="https://pic2.imgdb.cn/item/6464db730d2dde5777e7fa5a.webp" alt><br>如果不出意外将会提示如下信息<br><img src="https://pic2.imgdb.cn/item/6464db730d2dde5777e7fa78.webp" alt></p>
-<p>(3)系统烧录/安装<br>使用 balenaEtacher 将下载好的镜像烧录到sd卡上，软件已开源在Github<br>（下载地址: <a href="https://github.com/balena-io/etcher/releases/download/v1.5.113/balenaEtcher-Portable-1.5.113.exe">https://github.com/balena-io/etcher/releases/download/v1.5.113/balenaEtcher-Portable-1.5.113.exe</a> ）<br>从网络中获取烧录和本地烧录一样，只是网络获取只需将镜像地址填入就可以自己下载并烧录，不需要手动去下载镜像。<br><img src="https://pic2.imgdb.cn/item/6464db730d2dde5777e7fa97.webp" alt><br>我们选择本地已经下载好的树莓派官方镜像<br><img src="https://pic2.imgdb.cn/item/6464db900d2dde5777e819c5.webp" alt><br>接着选择要烧录的盘，这里我们选择刚刚格式化好的16G的SD卡，点击Select，然后等待几分钟<br><img src="https://pic2.imgdb.cn/item/6464db900d2dde5777e819f1.webp" alt><br>烧录成功（如果烧录失败重复几次格式化sd卡即可，如果还是失败那就用DiskGenuines将该盘的所有分区删除即可）<br><img src="https://pic2.imgdb.cn/item/6464db8f0d2dde5777e819aa.webp" alt></p>
-<p>参考: <a href="https://www.bilibili.com/read/cv9714518">https://www.bilibili.com/read/cv9714518</a></p>
-<p>二、配置系统参数</p>
-<p>(1)先配置一个wan口，协议根据你软路由连的上级决定，如果上级是光猫，则选DHCP,如果是路由器，则选PPPOE,然后输入宽带的用户名和密码</p>
-<p>(2) 在订阅页面输入订阅地址，手动更新订阅地址，然后选择具体的地址进行应用,保存应用</p>
-<p>三、连接硬路由<br>使用刷好系统的软路由(wan)连接硬路由(lan)，这里关键的一步是要开启硬路由的AP模式，具体的开启方式因为不同的路由器开启方式不同，<br>就不细说了，自行google即可</p>
-<p>注意:中文魔改版的openwrt的shadowrocket的广告过滤有很多问题，最好不要开启，不然可能会产生无法保存配置的bug</p>
-]]></content>
-      <tags>
-        <tag>其他</tag>
       </tags>
   </entry>
   <entry>
@@ -218,6 +218,7 @@ log.info(&quot;first put value error &#123;&#125;&quot; , e);
     <url>/2026/01/03/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/java%E5%9F%BA%E7%A1%80/%E6%B3%A8%E8%A7%A3/</url>
     <content><![CDATA[<p>面试官：来讲讲什么是注解吧<br>候选者：注解在我的理解下，就是代码中的特殊标记，这些标记可以在编译、类加载、运行时被读取，并执行相对应的处理。<br><span id="more"></span>                  </p>
 <p>面试官：你这讲得有点抽象，你先说说你在开发中有没有用到注解吧。<br>候选者：注解其实在开发中是非常常见的，比如我们在使用各种框架时（像我们Java程序员接触最多的还是Spring框架一套），就会用到非常多的注解，@Controller / @Param / @Select 等等。一些项目也用到lombok的注解，@Slf4j / @Data 等等<br>候选者：除了框架实现的注解，Java原生也有@Overried、@Deprecated、@FunctionalInterface等基本注解。Java原生的基本注解大多数用于「标记」和「检查」<br>候选者：原生Java除了这些提供基本注解之外，还有一种叫做元Annotation（元注解），所谓的元Annotation就是用来修饰注解的。常用的元Annotation有@Retention 和@Target。@Retention注解可以简单理解为设置注解的生命周期，而@Target表示这个注解可以修饰哪些地方（比如方法、还是成员变量、还是包等等）<br>面试官：嗯，听得出来你在工作中是真的用到注解的，这些可能是Spring、Mybatis等框架原生提供的，可能是Java原生的。那你自己写过注解吗？<br>候选者：嗯，写过的。背景是这样的：我司有个监控告警系统，对外提供了客户端供我们自己使用。监控一般的指标就是QPS、RT和错误嘛。<br>候选者：原生的客户端需要在代码里指定上报，这会导致这种监控的代码会跟业务代码混合，比较恶心。</p>
+<p>\</p>
 <pre><code>public void send(String userName) &#123;
 try &#123;
 // qps 上报
@@ -241,7 +242,7 @@ rt(endTime - startTime);
 error(params);
 &#125;
 &#125;
-</code></pre><p>候选者：其实这种基础的监控信息，显然都可以通过AOP切面的方式去处理掉（可以看到都是方法级的）。而再用注解这个载体配置相关的信息，配合AOP解析就会比较优雅<br>候选者：接下来讲讲我是怎么做的吧。<br>候选者：要写自定义的注解，首先考虑我们是在什么时候解析这个注解。这就需要用到前面所说的@Retention注解，这个注解会修饰我们自定义注解生命周期。<br>候选者：@Retention注解传入的是RetentionPolicy枚举，该枚举有三个常量，分别是SOURCE、CLASS和RUNTIME<br>候选者：SOURCE代表着注解仅保留在源级别中，并由编译器忽略。CLASS代表着注解在编译时由编译器保留，但Java虚拟机（JVM）会忽略。RUNTIME代表着标记的注解会由JVM保留，因此运行时环境可以使用它。<br>候选者：理解这块就得了解从 .java 文件到 class 文件再到 class 被jvm加载的过程了。下面的图描述着从.java文件到编译为class文件的过程<br>Image<br>候选者：从上面的图可以发现有个「注解抽象语法树」，这里其实就会去解析注解，然后做处理的逻辑。<br>候选者：所以重点来了，如果你想要在编译期间处理注解相关的逻辑，你需要继承AbstractProcessor 并实现process方法。比如可以看到lombok就用AnnotationProcessor继承了AbstractProcessor。<br>候选者：一般来说，只要自定义的注解中@Retention注解设置为SOURCE和CLASS这俩个级别，那么就需要继承并实现（因为SOURCE和CLASS这俩个级别等加载到jvm的时候，注解就被抹除了）<br>候选者：从这里又引申出：lombok的实现原理就是在这（为什么使用了个@Data这样的注解就能有set/get等方法了，就是在这里加上去的）<br>面试官：嗯，你是还有点东西哦<br>候选者：一般来说，我们自己定义的注解都是RUNTIME级别的，因为大多数情况我们是根据运行时环境去做一些处理。<br>候选者：我们现实在开发的过程中写自定义注解需要配合反射来使用（因为反射是Java获取运行时的信息的重要手段）。<br>候选者：所以，我当时就用了自定义注解，在Spring AOP的逻辑处理中，判断是否带有自定义注解，如果有则将监控的逻辑写在方法的前后。这样，只要在方法上加上我的注解，那就可以有对方法监控的效果（RT、QPS、ERROR）</p>
+</code></pre><p>\<br>候选者：其实这种基础的监控信息，显然都可以通过AOP切面的方式去处理掉（可以看到都是方法级的）。而再用注解这个载体配置相关的信息，配合AOP解析就会比较优雅<br>候选者：接下来讲讲我是怎么做的吧。<br>候选者：要写自定义的注解，首先考虑我们是在什么时候解析这个注解。这就需要用到前面所说的@Retention注解，这个注解会修饰我们自定义注解生命周期。<br>候选者：@Retention注解传入的是RetentionPolicy枚举，该枚举有三个常量，分别是SOURCE、CLASS和RUNTIME<br>候选者：SOURCE代表着注解仅保留在源级别中，并由编译器忽略。CLASS代表着注解在编译时由编译器保留，但Java虚拟机（JVM）会忽略。RUNTIME代表着标记的注解会由JVM保留，因此运行时环境可以使用它。<br>候选者：理解这块就得了解从 .java 文件到 class 文件再到 class 被jvm加载的过程了。下面的图描述着从.java文件到编译为class文件的过程<br>Image<br>候选者：从上面的图可以发现有个「注解抽象语法树」，这里其实就会去解析注解，然后做处理的逻辑。<br>候选者：所以重点来了，如果你想要在编译期间处理注解相关的逻辑，你需要继承AbstractProcessor 并实现process方法。比如可以看到lombok就用AnnotationProcessor继承了AbstractProcessor。<br>候选者：一般来说，只要自定义的注解中@Retention注解设置为SOURCE和CLASS这俩个级别，那么就需要继承并实现（因为SOURCE和CLASS这俩个级别等加载到jvm的时候，注解就被抹除了）<br>候选者：从这里又引申出：lombok的实现原理就是在这（为什么使用了个@Data这样的注解就能有set/get等方法了，就是在这里加上去的）<br>面试官：嗯，你是还有点东西哦<br>候选者：一般来说，我们自己定义的注解都是RUNTIME级别的，因为大多数情况我们是根据运行时环境去做一些处理。<br>候选者：我们现实在开发的过程中写自定义注解需要配合反射来使用（因为反射是Java获取运行时的信息的重要手段）。<br>候选者：所以，我当时就用了自定义注解，在Spring AOP的逻辑处理中，判断是否带有自定义注解，如果有则将监控的逻辑写在方法的前后。这样，只要在方法上加上我的注解，那就可以有对方法监控的效果（RT、QPS、ERROR）</p>
 <pre><code>@Around(&quot;@annotation(com.sanwai.service.openapi.monitor.Monitor)&quot;)
 public Object antispan(ProceedingJoinPoint pjp) throws Throwable &#123;
 
