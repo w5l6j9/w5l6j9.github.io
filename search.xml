@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>java的引用和引用传递</title>
+    <url>/2023/01/03/java%E7%9A%84%E5%BC%95%E7%94%A8%E5%92%8C%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/</url>
+    <content><![CDATA[<p>什么是引用:引用就是一个内存地址，一般存在内存的栈(stack)空间中。ps:这里指的内存一般都是java内存模型，而非操作系统内存</p>
+<p>Java中一共有4种引用方式<br><span id="more"></span><br>1.强引用 2.软引用 3.弱引用 4.虚引用</p>
+<p>1.强引用        强引用指向的对象永远不会被垃圾回收器回收，直至内存溢出oom<br>使用场景:String str = new String(“str”);</p>
+<p>2.软引用        软引用指向的对象在内存不足时，会被垃圾回收器回收<br>使用场景:创建缓存的时候，创建的对象放进缓存中，当内存不足时，JVM就会回收早先创建的对象。PS：图片编辑器，视频编辑器之类的软件可以使用这种思路。<br>软引用使用例子传送门：<a href="https://www.cnblogs.com/mjorcen/p/3968018.html">https://www.cnblogs.com/mjorcen/p/3968018.html</a></p>
+<p>3.弱引用        弱引用指向的对象不管内存不足与否，都会被垃圾回收器回收<br>使用场景:Java源码中的java.util.WeakHashMap中的key就是使用弱引用，我的理解就是，一旦我不需要某个引用，JVM会自动帮我处理它，这样我就不需要做其它操作。<br>弱引用使用例子传送门：<a href="http://www.importnew.com/21206.html">http://www.importnew.com/21206.html</a></p>
+<p>4.虚引用        在java8版本之前，只有在虚引用被回收后，虚引用指向的对象才会被垃圾回收器回收；而在java9以及更新的版本中，虚引用回收与否不会对指向的对象造成任何影响<br>使用场景:对象销毁前的一些操作，比如说资源释放等。Object.finalize()虽然也可以做这类动作，但是这个方式即不安全又低效<br>虚引用使用例子传送门：<a href="http://blog.csdn.net/aitangyong/article/details/39450341">http://blog.csdn.net/aitangyong/article/details/39450341</a></p>
+<p>一般来说，java中的传递都是都是值传递，即在向一个方法中传递某一个对象的引用后，在方法中的引用都是一个新的拷贝(这个应该是牵扯到深拷贝和浅拷贝的相关的内容)，当对这个引用本身做任何操作，都不会影响到原有引用，但若是对引用指向的对象做操作，如赋予这个引用指向的对象的中的某个属性的值后，这个对象本身会受到影响</p>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一个类的一生</title>
+    <url>/2023/01/05/%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E4%B8%80%E7%94%9F/</url>
+    <content><![CDATA[<p><img src="https://pic.imgdb.cn/item/63b6cffbbe43e0d30e6b5ec4.jpg" alt></p>
+]]></content>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo建站全攻略</title>
     <url>/2022/11/06/Hexo%E5%BB%BA%E7%AB%99%E5%85%A8%E6%94%BB%E7%95%A5/</url>
     <content><![CDATA[<p>一、Hexo简介<br>Hexo 是一个快速、简洁且高效的博客框架，使用 Markdown解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<br><span id="more"></span><br>二、搭建流程（Linux）<br>1、准备工作<br>安装node.js<br>下载地址：<a href="https://nodejs.org/en">https://nodejs.org/en</a><br>推荐下载LTS版，默认安装即可</p>
@@ -67,30 +91,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>java的引用和引用传递</title>
-    <url>/2023/01/03/java%E7%9A%84%E5%BC%95%E7%94%A8%E5%92%8C%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92/</url>
-    <content><![CDATA[<p>什么是引用:引用就是一个内存地址，一般存在内存的栈(stack)空间中。ps:这里指的内存一般都是java内存模型，而非操作系统内存</p>
-<p>Java中一共有4种引用方式<br><span id="more"></span><br>1.强引用 2.软引用 3.弱引用 4.虚引用</p>
-<p>1.强引用        强引用指向的对象永远不会被垃圾回收器回收，直至内存溢出oom<br>使用场景:String str = new String(“str”);</p>
-<p>2.软引用        软引用指向的对象在内存不足时，会被垃圾回收器回收<br>使用场景:创建缓存的时候，创建的对象放进缓存中，当内存不足时，JVM就会回收早先创建的对象。PS：图片编辑器，视频编辑器之类的软件可以使用这种思路。<br>软引用使用例子传送门：<a href="https://www.cnblogs.com/mjorcen/p/3968018.html">https://www.cnblogs.com/mjorcen/p/3968018.html</a></p>
-<p>3.弱引用        弱引用指向的对象不管内存不足与否，都会被垃圾回收器回收<br>使用场景:Java源码中的java.util.WeakHashMap中的key就是使用弱引用，我的理解就是，一旦我不需要某个引用，JVM会自动帮我处理它，这样我就不需要做其它操作。<br>弱引用使用例子传送门：<a href="http://www.importnew.com/21206.html">http://www.importnew.com/21206.html</a></p>
-<p>4.虚引用        在java8版本之前，只有在虚引用被回收后，虚引用指向的对象才会被垃圾回收器回收；而在java9以及更新的版本中，虚引用回收与否不会对指向的对象造成任何影响<br>使用场景:对象销毁前的一些操作，比如说资源释放等。Object.finalize()虽然也可以做这类动作，但是这个方式即不安全又低效<br>虚引用使用例子传送门：<a href="http://blog.csdn.net/aitangyong/article/details/39450341">http://blog.csdn.net/aitangyong/article/details/39450341</a></p>
-<p>一般来说，java中的传递都是都是值传递，即在向一个方法中传递某一个对象的引用后，在方法中的引用都是一个新的拷贝(这个应该是牵扯到深拷贝和浅拷贝的相关的内容)，当对这个引用本身做任何操作，都不会影响到原有引用，但若是对引用指向的对象做操作，如赋予这个引用指向的对象的中的某个属性的值后，这个对象本身会受到影响</p>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一个类的一生</title>
-    <url>/2023/01/05/%E4%B8%80%E4%B8%AA%E7%B1%BB%E7%9A%84%E4%B8%80%E7%94%9F/</url>
-    <content><![CDATA[<p><img src="https://pic.imgdb.cn/item/63b6cffbbe43e0d30e6b5ec4.jpg" alt></p>
-]]></content>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>软路由的搭建</title>
     <url>/2023/05/08/%E8%BD%AF%E8%B7%AF%E7%94%B1%E7%9A%84%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<p>背景:之前入手了一个苹果电视盒，一直放在角落吃灰。由于最近搬家了，苹果电视盒总算有用武之地了(搭配索尼4k电视，嘿嘿嘿)，<br>但是苹果电视盒呢，懂的都懂， 需要科学上网的环境才能体验到全部功能。那要在家里搭建一个可以供所有终端(手机，电视，电脑)<br>都能进行科学上网的环境， 一台高可用的软路由必不可少，那今天咱们就来学习一下如何用openwrt系统配置搭建一台软路由。<br><span id="more"></span>                  </p>
@@ -134,91 +134,10 @@
       </tags>
   </entry>
   <entry>
-    <title>泛型</title>
-    <url>/2026/01/04/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/java%E5%9F%BA%E7%A1%80/%E6%B3%9B%E5%9E%8B/</url>
-    <content><![CDATA[<p>面试官：这次咱们就来聊聊泛型呗？你对泛型有多少了解？<br>候选者：在Java中的泛型简单来说就是：在创建对象或调用方法的时候才明确下具体的类型<br>候选者：使用泛型的好处就是代码更加简洁（不再需要强制转换），程序更加健壮（在编译期间没有警告，在运行期就不会出现ClassCastException异常）<br><span id="more"></span>                  </p>
-<p>面试官：平时在工作中用得多吗？<br>候选者：在操作集合的时候，还是很多的，毕竟方便啊。<br>List<String> lists = new ArrayList&lt;&gt;();<br>lists.add(“对线面试官”);<br>候选者：如果是其他场景的话，那就是在写「基础组件」的时候了。<br>面试官：来，说说背景吧，你是怎么写的。<br>候选者：再明确一下泛型就是「在创建对象或调用方法的时候才明确下具体的类型」，而组件为了做到足够的通用性，是不知道「用户」传入什么类型参数进来的，所以在这种情况下用泛型就是很好的实践。<br>候选者：这块可以参考SpringData JPA 的JpaRepository写法。</String></p>
-<pre><code>public interface JpaRepository&lt;T, ID&gt; extends PagingAndSortingRepository&lt;T, ID&gt;, QueryByExampleExecutor&lt;T&gt; &#123;
-
-List&lt;T&gt; findAll();
-
-List&lt;T&gt; findAll(Sort sort);
-
-List&lt;T&gt; findAllById(Iterable&lt;ID&gt; ids);
-
-&lt;S extends T&gt; List&lt;S&gt; saveAll(Iterable&lt;S&gt; entities);
-
-void flush();
-
-&lt;S extends T&gt; S saveAndFlush(S entity);
-
-void deleteInBatch(Iterable&lt;T&gt; entities);
-
-void deleteAllInBatch();
-
-T getOne(ID id);
-
-@Override
-&lt;S extends T&gt; List&lt;S&gt; findAll(Example&lt;S&gt; example);
-
-@Override
-&lt;S extends T&gt; List&lt;S&gt; findAll(Example&lt;S&gt; example, Sort sort);
-&#125;
-</code></pre><p>候选者：要写组件，还是离不开Java反射机制（能够从运行时获取信息），所以一般组件是泛型+反射来实现的。<br>候选者：回到我所讲的组件吧，背景是这样的：我这边有个需求，需要根据某些字段进行聚合。<br>候选者：换到 SQL 其实就是select sum(column1),sum(column2) from table group by field1,field2<br>候选者：需要 sum 和group by 的列肯定是由业务方自己传入，而SQL 的表 其实就是我们的POJO（传入的字段也肯定是 POJO 的属性）<br>候选者：单个业务实际可以在参数上写死POJO，但为了做得更加通用，我把入参设置为泛型<br>候选者：拿到参数后，通过反射获取其字段具体的值，做累加就好了。<br>// 传入 需要group by 和 sum 的字段名</p>
-<pre><code>public cacheMap(List&lt;String&gt; groupByKeys, List&lt;String&gt; sumValues) &#123;
-this.groupByKeys = groupByKeys;
-this.sumValues = sumValues;
-&#125;
-
-private void excute(T e) &#123;
-
-// 从pojo 取出需要group by 的字段 list
-List&lt;Object&gt; key = buildPrimaryKey(e);
-
-// primaryMap 是存储结果的Map
-T value = primaryMap.get(key);
-
-// 如果从存储结果找到有相应记录
-if (value != null) &#123;
-for (String elem : sumValues) &#123;
-// 反射获取对应的字段，做累加处理
-Field field = getDeclaredField(elem, e);
-if (field.get(e) instanceof Integer) &#123;
-field.set(value, (Integer) field.get(e) + (Integer) field.get(value));
-&#125; else if (field.get(e) instanceof Long) &#123;
-field.set(value, (Long) field.get(e) + (Long) field.get(value));
-&#125; else &#123;
-throw new RuntimeException(&quot;类型异常,请处理异常&quot;);
-&#125;
-&#125;
-
-// 处理时间记录
-Field field = getDeclaredField(&quot;updated&quot;, value);
-if (null != field) &#123;
-  field.set(value, DateTimeUtils.getCurrentTime());
-&#125;
-&#125; else &#123;
-// group by 字段 第一次进来
-try &#123;
-primaryMap.put(key, Tclone(e));
-createdMap.put(key, DateTimeUtils.getCurrentTime());
-&#125;catch (Exception ex) &#123;
-log.info(&quot;first put value error &#123;&#125;&quot; , e);
-&#125;
-&#125;
-&#125;
-</code></pre><p>候选者：理解了泛型的作用之后，再去审视自己代码时，就可以判断是否需要用到泛型了。<br>面试官：嗯，可以的，总体来看有自己的见解。</p>
-]]></content>
-      <tags>
-        <tag>对线面试官</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>注解</title>
     <url>/2026/01/03/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/java%E5%9F%BA%E7%A1%80/%E6%B3%A8%E8%A7%A3/</url>
     <content><![CDATA[<p>面试官：来讲讲什么是注解吧<br>候选者：注解在我的理解下，就是代码中的特殊标记，这些标记可以在编译、类加载、运行时被读取，并执行相对应的处理。<br><span id="more"></span>                  </p>
 <p>面试官：你这讲得有点抽象，你先说说你在开发中有没有用到注解吧。<br>候选者：注解其实在开发中是非常常见的，比如我们在使用各种框架时（像我们Java程序员接触最多的还是Spring框架一套），就会用到非常多的注解，@Controller / @Param / @Select 等等。一些项目也用到lombok的注解，@Slf4j / @Data 等等<br>候选者：除了框架实现的注解，Java原生也有@Overried、@Deprecated、@FunctionalInterface等基本注解。Java原生的基本注解大多数用于「标记」和「检查」<br>候选者：原生Java除了这些提供基本注解之外，还有一种叫做元Annotation（元注解），所谓的元Annotation就是用来修饰注解的。常用的元Annotation有@Retention 和@Target。@Retention注解可以简单理解为设置注解的生命周期，而@Target表示这个注解可以修饰哪些地方（比如方法、还是成员变量、还是包等等）<br>面试官：嗯，听得出来你在工作中是真的用到注解的，这些可能是Spring、Mybatis等框架原生提供的，可能是Java原生的。那你自己写过注解吗？<br>候选者：嗯，写过的。背景是这样的：我司有个监控告警系统，对外提供了客户端供我们自己使用。监控一般的指标就是QPS、RT和错误嘛。<br>候选者：原生的客户端需要在代码里指定上报，这会导致这种监控的代码会跟业务代码混合，比较恶心。</p>
-<p>\</p>
 <pre><code>public void send(String userName) &#123;
 try &#123;
 // qps 上报
@@ -242,7 +161,7 @@ rt(endTime - startTime);
 error(params);
 &#125;
 &#125;
-</code></pre><p>\<br>候选者：其实这种基础的监控信息，显然都可以通过AOP切面的方式去处理掉（可以看到都是方法级的）。而再用注解这个载体配置相关的信息，配合AOP解析就会比较优雅<br>候选者：接下来讲讲我是怎么做的吧。<br>候选者：要写自定义的注解，首先考虑我们是在什么时候解析这个注解。这就需要用到前面所说的@Retention注解，这个注解会修饰我们自定义注解生命周期。<br>候选者：@Retention注解传入的是RetentionPolicy枚举，该枚举有三个常量，分别是SOURCE、CLASS和RUNTIME<br>候选者：SOURCE代表着注解仅保留在源级别中，并由编译器忽略。CLASS代表着注解在编译时由编译器保留，但Java虚拟机（JVM）会忽略。RUNTIME代表着标记的注解会由JVM保留，因此运行时环境可以使用它。<br>候选者：理解这块就得了解从 .java 文件到 class 文件再到 class 被jvm加载的过程了。下面的图描述着从.java文件到编译为class文件的过程<br>Image<br>候选者：从上面的图可以发现有个「注解抽象语法树」，这里其实就会去解析注解，然后做处理的逻辑。<br>候选者：所以重点来了，如果你想要在编译期间处理注解相关的逻辑，你需要继承AbstractProcessor 并实现process方法。比如可以看到lombok就用AnnotationProcessor继承了AbstractProcessor。<br>候选者：一般来说，只要自定义的注解中@Retention注解设置为SOURCE和CLASS这俩个级别，那么就需要继承并实现（因为SOURCE和CLASS这俩个级别等加载到jvm的时候，注解就被抹除了）<br>候选者：从这里又引申出：lombok的实现原理就是在这（为什么使用了个@Data这样的注解就能有set/get等方法了，就是在这里加上去的）<br>面试官：嗯，你是还有点东西哦<br>候选者：一般来说，我们自己定义的注解都是RUNTIME级别的，因为大多数情况我们是根据运行时环境去做一些处理。<br>候选者：我们现实在开发的过程中写自定义注解需要配合反射来使用（因为反射是Java获取运行时的信息的重要手段）。<br>候选者：所以，我当时就用了自定义注解，在Spring AOP的逻辑处理中，判断是否带有自定义注解，如果有则将监控的逻辑写在方法的前后。这样，只要在方法上加上我的注解，那就可以有对方法监控的效果（RT、QPS、ERROR）</p>
+</code></pre><p>候选者：其实这种基础的监控信息，显然都可以通过AOP切面的方式去处理掉（可以看到都是方法级的）。而再用注解这个载体配置相关的信息，配合AOP解析就会比较优雅<br>候选者：接下来讲讲我是怎么做的吧。<br>候选者：要写自定义的注解，首先考虑我们是在什么时候解析这个注解。这就需要用到前面所说的@Retention注解，这个注解会修饰我们自定义注解生命周期。<br>候选者：@Retention注解传入的是RetentionPolicy枚举，该枚举有三个常量，分别是SOURCE、CLASS和RUNTIME<br>候选者：SOURCE代表着注解仅保留在源级别中，并由编译器忽略。CLASS代表着注解在编译时由编译器保留，但Java虚拟机（JVM）会忽略。RUNTIME代表着标记的注解会由JVM保留，因此运行时环境可以使用它。<br>候选者：理解这块就得了解从 .java 文件到 class 文件再到 class 被jvm加载的过程了。下面的图描述着从.java文件到编译为class文件的过程<br>Image<br>候选者：从上面的图可以发现有个「注解抽象语法树」，这里其实就会去解析注解，然后做处理的逻辑。<br>候选者：所以重点来了，如果你想要在编译期间处理注解相关的逻辑，你需要继承AbstractProcessor 并实现process方法。比如可以看到lombok就用AnnotationProcessor继承了AbstractProcessor。<br>候选者：一般来说，只要自定义的注解中@Retention注解设置为SOURCE和CLASS这俩个级别，那么就需要继承并实现（因为SOURCE和CLASS这俩个级别等加载到jvm的时候，注解就被抹除了）<br>候选者：从这里又引申出：lombok的实现原理就是在这（为什么使用了个@Data这样的注解就能有set/get等方法了，就是在这里加上去的）<br>面试官：嗯，你是还有点东西哦<br>候选者：一般来说，我们自己定义的注解都是RUNTIME级别的，因为大多数情况我们是根据运行时环境去做一些处理。<br>候选者：我们现实在开发的过程中写自定义注解需要配合反射来使用（因为反射是Java获取运行时的信息的重要手段）。<br>候选者：所以，我当时就用了自定义注解，在Spring AOP的逻辑处理中，判断是否带有自定义注解，如果有则将监控的逻辑写在方法的前后。这样，只要在方法上加上我的注解，那就可以有对方法监控的效果（RT、QPS、ERROR）</p>
 <pre><code>@Around(&quot;@annotation(com.sanwai.service.openapi.monitor.Monitor)&quot;)
 public Object antispan(ProceedingJoinPoint pjp) throws Throwable &#123;
 
@@ -284,6 +203,18 @@ public Object antispan(ProceedingJoinPoint pjp) throws Throwable &#123;
     return o;
 &#125;
 </code></pre><p>面试官：嗯，总体来看，你对注解这块基础还是扎实的</p>
+]]></content>
+      <tags>
+        <tag>对线面试官</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>泛型</title>
+    <url>/2026/01/04/%E5%AF%B9%E7%BA%BF%E9%9D%A2%E8%AF%95%E5%AE%98/java%E5%9F%BA%E7%A1%80/%E6%B3%9B%E5%9E%8B/</url>
+    <content><![CDATA[<p>面试官：这次咱们就来聊聊泛型呗？你对泛型有多少了解？<br>候选者：在Java中的泛型简单来说就是：在创建对象或调用方法的时候才明确下具体的类型<br>候选者：使用泛型的好处就是代码更加简洁（不再需要强制转换），程序更加健壮（在编译期间没有警告，在运行期就不会出现ClassCastException异常）<br><span id="more"></span>                  </p>
+<p>面试官：平时在工作中用得多吗？<br>候选者：在操作集合的时候，还是很多的，毕竟方便啊。<br>List<String> lists = new ArrayList&lt;&gt;();<br>lists.add(“对线面试官”);<br>候选者：如果是其他场景的话，那就是在写「基础组件」的时候了。<br>面试官：来，说说背景吧，你是怎么写的。<br>候选者：再明确一下泛型就是「在创建对象或调用方法的时候才明确下具体的类型」，而组件为了做到足够的通用性，是不知道「用户」传入什么类型参数进来的，所以在这种情况下用泛型就是很好的实践。<br>候选者：这块可以参考SpringData JPA 的JpaRepository写法。</String></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public interface JpaRepository&lt;T, ID&gt; extends PagingAndSortingRepository&lt;T, ID&gt;, QueryByExampleExecutor&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">List&lt;T&gt; findAll();</span><br><span class="line"></span><br><span class="line">List&lt;T&gt; findAll(Sort sort);</span><br><span class="line"></span><br><span class="line">List&lt;T&gt; findAllById(Iterable&lt;ID&gt; ids);</span><br><span class="line"></span><br><span class="line">&lt;S extends T&gt; List&lt;S&gt; saveAll(Iterable&lt;S&gt; entities);</span><br><span class="line"></span><br><span class="line">void flush();</span><br><span class="line"></span><br><span class="line">&lt;S extends T&gt; S saveAndFlush(S entity);</span><br><span class="line"></span><br><span class="line">void deleteInBatch(Iterable&lt;T&gt; entities);</span><br><span class="line"></span><br><span class="line">void deleteAllInBatch();</span><br><span class="line"></span><br><span class="line">T getOne(ID id);</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">&lt;S extends T&gt; List&lt;S&gt; findAll(Example&lt;S&gt; example);</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">&lt;S extends T&gt; List&lt;S&gt; findAll(Example&lt;S&gt; example, Sort sort);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>候选者：要写组件，还是离不开Java反射机制（能够从运行时获取信息），所以一般组件是泛型+反射来实现的。<br>候选者：回到我所讲的组件吧，背景是这样的：我这边有个需求，需要根据某些字段进行聚合。<br>候选者：换到 SQL 其实就是select sum(column1),sum(column2) from table group by field1,field2<br>候选者：需要 sum 和group by 的列肯定是由业务方自己传入，而SQL 的表 其实就是我们的POJO（传入的字段也肯定是 POJO 的属性）<br>候选者：单个业务实际可以在参数上写死POJO，但为了做得更加通用，我把入参设置为泛型<br>候选者：拿到参数后，通过反射获取其字段具体的值，做累加就好了。<br>// 传入 需要group by 和 sum 的字段名<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">public cacheMap(List&lt;String&gt; groupByKeys, List&lt;String&gt; sumValues) &#123;</span><br><span class="line">this.groupByKeys = groupByKeys;</span><br><span class="line">this.sumValues = sumValues;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void excute(T e) &#123;</span><br><span class="line"></span><br><span class="line">// 从pojo 取出需要group by 的字段 list</span><br><span class="line">List&lt;Object&gt; key = buildPrimaryKey(e);</span><br><span class="line"></span><br><span class="line">// primaryMap 是存储结果的Map</span><br><span class="line">T value = primaryMap.get(key);</span><br><span class="line"></span><br><span class="line">// 如果从存储结果找到有相应记录</span><br><span class="line">if (value != null) &#123;</span><br><span class="line">for (String elem : sumValues) &#123;</span><br><span class="line">// 反射获取对应的字段，做累加处理</span><br><span class="line">Field field = getDeclaredField(elem, e);</span><br><span class="line">if (field.get(e) instanceof Integer) &#123;</span><br><span class="line">field.set(value, (Integer) field.get(e) + (Integer) field.get(value));</span><br><span class="line">&#125; else if (field.get(e) instanceof Long) &#123;</span><br><span class="line">field.set(value, (Long) field.get(e) + (Long) field.get(value));</span><br><span class="line">&#125; else &#123;</span><br><span class="line">throw new RuntimeException(&quot;类型异常,请处理异常&quot;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 处理时间记录</span><br><span class="line">Field field = getDeclaredField(&quot;updated&quot;, value);</span><br><span class="line">if (null != field) &#123;</span><br><span class="line">  field.set(value, DateTimeUtils.getCurrentTime());</span><br><span class="line">&#125;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">// group by 字段 第一次进来</span><br><span class="line">try &#123;</span><br><span class="line">primaryMap.put(key, Tclone(e));</span><br><span class="line">createdMap.put(key, DateTimeUtils.getCurrentTime());</span><br><span class="line">&#125;catch (Exception ex) &#123;</span><br><span class="line">log.info(&quot;first put value error &#123;&#125;&quot; , e);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>候选者：理解了泛型的作用之后，再去审视自己代码时，就可以判断是否需要用到泛型了。<br>面试官：嗯，可以的，总体来看有自己的见解。</p>
 ]]></content>
       <tags>
         <tag>对线面试官</tag>
