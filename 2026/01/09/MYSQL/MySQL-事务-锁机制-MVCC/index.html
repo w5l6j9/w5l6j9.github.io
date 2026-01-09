@@ -40,7 +40,7 @@
 <meta property="og:image" content="https://www.wjtzq.top/resources/BF02C21AA13626A7F515BF88DD580627.jpg">
 <meta property="og:image" content="https://www.wjtzq.top/resources/EDA29439839BF48A10563257C8CB0A72.jpg">
 <meta property="article:published_time" content="2026-01-09T09:11:27.000Z">
-<meta property="article:modified_time" content="2026-01-09T09:19:23.746Z">
+<meta property="article:modified_time" content="2026-01-09T09:38:25.458Z">
 <meta property="article:author" content="laray">
 <meta property="article:tag" content="对线面试官">
 <meta name="twitter:card" content="summary">
@@ -202,7 +202,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2026-01-09 17:11:27 / 修改时间：17:19:23" itemprop="dateCreated datePublished" datetime="2026-01-09T17:11:27+08:00">2026-01-09</time>
+              <time title="创建时间：2026-01-09 17:11:27 / 修改时间：17:38:25" itemprop="dateCreated datePublished" datetime="2026-01-09T17:11:27+08:00">2026-01-09</time>
             </span>
 
           
@@ -228,30 +228,30 @@
 <p><strong>候选者</strong>：事务其目的是为了「保证数据最终的一致性」。</p>
 <p><strong>候选者</strong>：举个例子，我给你发支付宝转了888块红包。那自然我的支付宝余额会扣减888块，你的支付宝余额会增加888块。</p>
 <p><strong>候选者</strong>：而事务就是保证我的余额扣减跟你的余额增添是同时成功或者同时失败的，这样这次转账就正常了</p>
-<p><img src="/resources/3214B4815BDC944322A5FFB527B499F5.jpg" alt="Image"></p>
+<p><img src="/resources/3214B4815BDC944322A5FFB527B499F5.jpg" alt></p>
 <p><strong>面试官</strong>：<strong>嗯，那你了解事务的几大特性吗？</strong></p>
 <p><strong>候选者</strong>：嗯，就是ACID嘛，分别是原子性（Atomicity）、一致性（Consistency）、隔离性（Isolation）、持久性（Durability）。</p>
 <p><strong>候选者</strong>：原子性指的是：当前事务的操作要么同时成功，要么同时失败。原子性由undo log日志来保证，因为undo log记载着数据修改前的信息。</p>
 <p><strong>候选者</strong>：比如我们要 insert 一条数据了，那undo log 会记录的一条对应的 delete 日志。我们要 update 一条记录时，那undo log会记录之前的「旧值」的update记录。</p>
 <p><strong>候选者</strong>：如果执行事务过程中出现异常的情况，那执行「回滚」。InnoDB引擎就是利用undo log记录下的数据，来将数据「恢复」到事务开始之前</p>
-<p><img src="/resources/FB963A2ADC65A60E0A8A9341E101EB66.jpg" alt="Image"></p>
+<p><img src="/resources/FB963A2ADC65A60E0A8A9341E101EB66.jpg" alt></p>
 <p><strong>候选者</strong>：一致性我稍稍往后讲，我先来说下隔离性</p>
 <p><strong>面试官</strong>：嗯…</p>
 <p><strong>候选者</strong>：隔离性指的是：在事务「并发」执行时，他们内部的操作不能互相干扰。如果多个事务可以同时操作一个数据，那么就会产生脏读、重复读、幻读的问题。</p>
 <p><strong>候选者</strong>：于是，事务与事务之间需要存在「一定」的隔离。在InnoDB引擎中，定义了四种隔离级别供我们使用：</p>
 <p><strong>候选者</strong>：分别是：read uncommit(读未提交)、read commit (读已提交)、repeatable read (可重复复读)、serializable (串行)</p>
 <p><strong>候选者</strong>：不同的隔离级别对事务之间的隔离性是不一样的（级别越高事务隔离性越好，但性能就越低），而隔离性是由MySQL的各种锁来实现的，只是它屏蔽了加锁的细节。</p>
-<p><img src="/resources/8A9AB93E1EAB6ED898D4E8ABB13BD1C3.jpg" alt="Image"></p>
+<p><img src="/resources/8A9AB93E1EAB6ED898D4E8ABB13BD1C3.jpg" alt></p>
 <p><strong>候选者</strong>：持久性指的就是：一旦提交了事务，它对数据库的改变就应该是永久性的。说白了就是，会将数据持久化在硬盘上。</p>
 <p><strong>候选者</strong>：而持久性由redo log 日志来保证，当我们要修改数据时，MySQL是先把这条记录所在的「页」找到，然后把该页加载到内存中，将对应记录进行修改。</p>
 <p><strong>候选者</strong>：为了防止内存修改完了，MySQL就挂掉了（如果内存改完，直接挂掉，那这次的修改相当于就丢失了）。</p>
 <p><strong>候选者</strong>：MySQL引入了redo log，内存写完了，然后会写一份redo log，这份redo log记载着这次在某个页上做了什么修改。</p>
 <p><strong>候选者</strong>：即便MySQL在中途挂了，我们还可以根据redo log来对数据进行恢复。</p>
 <p><strong>候选者</strong>：redo log 是顺序写的，写入速度很快。并且它记录的是物理修改（xxxx页做了xxx修改），文件的体积很小，恢复速度也很快。</p>
-<p><img src="/resources/EFD94A58956A4F3ABA8AF00E28D6109F.jpg" alt="Image"></p>
+<p><img src="/resources/EFD94A58956A4F3ABA8AF00E28D6109F.jpg" alt></p>
 <p><strong>候选者</strong>：回头再来讲一致性，「一致性」可以理解为我们使用事务的「目的」，而「隔离性」「原子性」「持久性」均是为了保障「一致性」的手段，保证一致性需要由应用程序代码来保证</p>
 <p><strong>候选者</strong>：比如，如果事务在发生的过程中，出现了异常情况，此时你就得回滚事务，而不是强行提交事务来导致数据不一致。</p>
-<p><img src="/resources/4FF790F216A4439D2A918F90B2D996B0.jpg" alt="Image"></p>
+<p><img src="/resources/4FF790F216A4439D2A918F90B2D996B0.jpg" alt></p>
 <p><strong>面试官</strong>：嗯，挺好的，讲了蛮多的</p>
 <p><strong>面试官</strong>：刚才你也提到了隔离性嘛，<strong>然后你说在MySQL中有四种隔离级别，能分别来介绍下吗？</strong></p>
 <p><strong>候选者</strong>：嗯，为了讲清楚隔离级别，我顺带来说下MySQL锁相关的知识吧。</p>
@@ -260,13 +260,13 @@
 <p><strong>候选者</strong>：简单来说就是：锁住的是整棵树还是某几个节点，完全取决于SQL条件是否有命中到对应的索引节点。</p>
 <p><strong>候选者</strong>：而行锁又可以简单分为读锁（共享锁、S锁）和写锁（排它锁、X锁）。</p>
 <p><strong>候选者</strong>：读锁是共享的，多个事务可以同时读取同一个资源，但不允许其他事务修改。写锁是排他的，写锁会阻塞其他的写锁和读锁。</p>
-<p><img src="/resources/E878F89D5993F17D2D134DA1280311F6.jpg" alt="Image"></p>
+<p><img src="/resources/E878F89D5993F17D2D134DA1280311F6.jpg" alt></p>
 <p><strong>候选者</strong>：我现在就再回到隔离级别上吧，就直接以例子来说明啦。</p>
 <p><strong>面试官</strong>：嗯…</p>
 <p><strong>候选者</strong>：首先来说下read uncommit(读未提交)。比如说：A向B转账，A执行了转账语句，但A还没有提交事务，B读取数据，发现自己账户钱变多了！B跟A说，我已经收到钱了。A回滚事务【rollback】，等B再查看账户的钱时，发现钱并没有多。</p>
 <p><strong>候选者</strong>：简单的定义就是：事务B读取到了事务A还没提交的数据，这种用专业术语来说叫做「脏读」。</p>
 <p><strong>候选者</strong>：对于锁的维度而言，其实就是在read uncommit隔离级别下，读不会加任何锁，而写会加排他锁。读什么锁都不加，这就让排他锁无法排它了。</p>
-<p><img src="/resources/448C54C887F9FF5DA142F356354C2E2C.jpg" alt="Image"></p>
+<p><img src="/resources/448C54C887F9FF5DA142F356354C2E2C.jpg" alt></p>
 <p><strong>候选者</strong>：而我们又知道，对于更新操作而言，InnoDB是肯定会加写锁的（数据库是不可能允许在同一时间，更新同一条记录的）。而读操作，如果不加任何锁，那就会造成上面的脏读。</p>
 <p><strong>候选者</strong>：脏读在生产环境下肯定是无法接受的，那如果读加锁的话，那意味着：当更新数据的时，就没办法读取了，这会极大地降低数据库性能。</p>
 <p><strong>候选者</strong>：在MySQL InnoDB引擎层面，又有新的解决方案（解决加锁后读写性能问题），叫做MVCC(Multi-Version Concurrency Control)多版本并发控制</p>
